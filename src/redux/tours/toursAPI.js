@@ -1,3 +1,5 @@
+import { addTour, removeTour, getApiDataTour } from "./tours";
+
 export const postTourApi = (current_user, newTour) => async (dispatch) => {
   // this will change for the specific url when deployed
   await fetch('http://localhost:3000/tours/', {
@@ -31,4 +33,13 @@ export const deleteTourApi = (id) => async (dispatch) => {
     }),
   });
   dispatch(removeTour(id));
+};
+
+
+export const fetchApiDataTour = () => async (dispatch) => {
+  const result = await fetch(
+    'http://localhost:3000/tours/',
+  );
+  const resultJson = await result.json();
+  dispatch(getApiDataTour(resultJson));
 };

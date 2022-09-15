@@ -5,22 +5,22 @@ const GET_API_DATA_TOUR = 'GET_API_DATA_TOUR';
 const initialState = [];
 
 // Action Creators
-const addTour = (payload) => ({
+export const addTour = (payload) => ({
   type: ADD_TOUR,
   payload,
 });
 
-const removeTour = (payload) => ({
+export const removeTour = (payload) => ({
   type: REMOVE_TOUR,
   payload,
 });
 
-const getApiData = (payload) => ({
+export const getApiDataTour = (payload) => ({
   type: GET_API_DATA_TOUR,
   payload,
 });
 
-const tourReducer = (state = initialState, action) => {
+export const tourReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TOUR:
       return [...state, action.payload];
@@ -32,5 +32,3 @@ const tourReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default tourReducer;
