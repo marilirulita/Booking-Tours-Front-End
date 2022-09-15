@@ -9,7 +9,6 @@ import {
   selectCount,
 } from '../redux/counter/counterSlice';
 
-
 export function Counter() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ export function Counter() {
         </button>
       </div>
       <div>
-        <input value={incrementAmount} onChange={(e) => setIncrementAmount(e.target.value)}/>
+        <input value={incrementAmount} onChange={(e) => setIncrementAmount(e.target.value)} />
         <button onClick={() => dispatch(incrementByAmount(incrementValue))}>
           Add Amount
         </button>
