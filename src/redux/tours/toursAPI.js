@@ -16,5 +16,19 @@ export const postTourApi = (current_user, newTour) => async (dispatch) => {
       city: newTour.city
     }),
   });
-  dispatch(addBook(newBook));
+  dispatch(addTour(newTour));
+};
+
+export const deleteTourApi = (id) => async (dispatch) => {
+  await fetch(`http://localhost:3000/tours/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: id,
+    }),
+  });
+  dispatch(removeTour(id));
 };
