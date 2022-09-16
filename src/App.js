@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from './components/Main';
 import { Counter } from './components/Counter';
+import TourDetails from './components/TourDetails';
+import './styling/TourDetails.css';
 
 function App() {
   return (
@@ -10,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/counter" element={<Counter />} />
+          <Route path="/TourDetails/:tourID" element={<TourDetails />} />
         </Routes>
       </header>
     </div>
