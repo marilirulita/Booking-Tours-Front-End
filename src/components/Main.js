@@ -1,5 +1,13 @@
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchApiDataTours } from '../redux/tours/toursAPI';
+
 const Main = () => {
-  const tours = [];
+  const tours = useSelector((state) => state.tours);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchApiDataTours());
+  }, [dispatch]);
 
   return (
     <div>
