@@ -1,12 +1,14 @@
 import React from 'react';
-// import { Counter } from './components/Counter';
-import TestRedux from './components/TestRedux';
+import { Routes, Route } from 'react-router-dom';
+import { Counter } from './components/Counter';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TestRedux />
+        <Routes>
+          <Route path="/" element={<Counter />} />
+        </Routes>
       </header>
     </div>
   );
