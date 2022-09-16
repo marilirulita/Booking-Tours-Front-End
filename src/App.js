@@ -1,13 +1,13 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Counter } from './components/Counter';
+import Main from './components/Main';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Counter />} />
+          <Route path="/" element={<Main />} />
         </Routes>
       </header>
     </div>
