@@ -1,6 +1,7 @@
 const ADD_TOUR = 'ADD_TOUR';
 const REMOVE_TOUR = 'REMOVE_TOUR';
 const GET_API_DATA_TOUR = 'GET_API_DATA_TOUR';
+const GET_API_DATA_TOUR_DETAIL = 'GET_API_DATA_TOUR_DETAIL';
 const URL = 'http://127.0.0.1:3000/tours';
 
 const initialState = [];
@@ -21,6 +22,11 @@ export const getApiDataTour = (payload) => ({
   payload,
 });
 
+export const getApiDataTourDetail = (payload) => ({
+  type: GET_API_DATA_TOUR_DETAIL,
+  payload,
+});
+
 export const tourReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TOUR:
@@ -29,6 +35,8 @@ export const tourReducer = (state = initialState, action) => {
       return state.filter((tour) => tour.id !== action.payload);
     case GET_API_DATA_TOUR:
       return [...action.payload];
+    case GET_API_DATA_TOUR_DETAIL:
+      return [action.payload];
     default:
       return state;
   }
@@ -39,5 +47,5 @@ export const GetTeamsAPI = (num) => async (dispatch) => {
     method: 'GET',
   });
   const tours = await response.json();
-  dispatch(getApiDataTour(tours));
+  dispatch(getApiDataTourDetail(tours));
 };
