@@ -28,7 +28,7 @@ export const tourReducer = (state = initialState, action) => {
     case REMOVE_TOUR:
       return state.filter((tour) => tour.id !== action.payload);
     case GET_API_DATA_TOUR:
-      return [action.payload];
+      return [...action.payload];
     default:
       return state;
   }

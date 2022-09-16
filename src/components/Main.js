@@ -26,7 +26,7 @@ const Main = () => {
             />
             <h3>{tour.title}</h3>
             <p>{tour.description}</p>
-            <Link to="/counter">Book Now</Link>
+            <Link to="/TourDetails/">Book Now</Link>
           </div>
         ))}
       </div>
