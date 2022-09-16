@@ -1,6 +1,7 @@
 const ADD_TOUR = 'ADD_TOUR';
 const REMOVE_TOUR = 'REMOVE_TOUR';
 const GET_API_DATA_TOUR = 'GET_API_DATA_TOUR';
+const URL = 'http://127.0.0.1:3000/tours';
 
 const initialState = [];
 
@@ -27,8 +28,16 @@ export const tourReducer = (state = initialState, action) => {
     case REMOVE_TOUR:
       return state.filter((tour) => tour.id !== action.payload);
     case GET_API_DATA_TOUR:
-      return [...action.payload];
+      return [action.payload];
     default:
       return state;
   }
+};
+
+export const GetTeamsAPI = (num) => async (dispatch) => {
+  const response = await fetch(URL.concat('/').concat(num), {
+    method: 'GET',
+  });
+  const tours = await response.json();
+  dispatch(getApiDataTour(tours));
 };
