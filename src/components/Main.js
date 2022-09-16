@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchApiDataTours } from '../redux/tours/toursAPI';
 
 const Main = () => {
@@ -17,7 +18,17 @@ const Main = () => {
       </header>
       <div>
         <h3>Here is the carrusel of options</h3>
-        {tours.map((tour) => <p key={tour.id}>{tour.title}</p>)}
+        {tours.map((tour) => (
+          <div key={tour.id}>
+            <img
+              src={tour.photo}
+              alt={tour.title}
+            />
+            <h3>{tour.title}</h3>
+            <p>{tour.description}</p>
+            <Link to="/counter">Book Now</Link>
+          </div>
+        ))}
       </div>
     </div>
   );

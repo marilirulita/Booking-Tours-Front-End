@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Main from './components/Main';
+import { Counter } from './components/Counter';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/counter" element={<Counter />} />
         </Routes>
       </header>
     </div>
