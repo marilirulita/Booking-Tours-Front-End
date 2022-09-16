@@ -4,6 +4,7 @@ import Main from './components/Main';
 import { Counter } from './components/Counter';
 import TourDetails from './components/TourDetails';
 import './styling/TourDetails.css';
+import './styling/main.css';
 
 function App() {
   return (

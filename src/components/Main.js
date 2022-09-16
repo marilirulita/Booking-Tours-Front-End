@@ -11,7 +11,7 @@ const Main = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className='container'>
       <header>
         <h1>Latest Tours</h1>
         <p>Please select a Tour</p>
@@ -19,7 +19,7 @@ const Main = () => {
       <div>
         <h3>Here is the carrusel of options</h3>
         {tours.map((tour) => (
-          <div key={tour.id}>
+          <div key={tour.id} className="element" >
             <img
               src={tour.photo}
               alt={tour.title}
