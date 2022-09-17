@@ -1,7 +1,7 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { GetTeamsAPI } from '../redux/tours/tours';
+import { GetTeamsAPI } from '../redux/tours/toursAPI';
 
 const TourDetails = () => {
   const { tourID } = useParams();
