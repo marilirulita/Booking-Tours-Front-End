@@ -1,14 +1,14 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { GetTeamsAPI } from '../redux/tours/toursAPI';
+import { GetToursAPI } from '../redux/tours/toursAPI';
 
 const TourDetails = () => {
   const { tourID } = useParams();
   const dispatch = useDispatch();
   const Store = useSelector((store) => store.tours);
   useEffect(() => {
-    document.title = dispatch(GetTeamsAPI(tourID));
+    document.title = dispatch(GetToursAPI(tourID));
   }, []);
   const tour = Store[0];
   if (tour !== undefined) {
