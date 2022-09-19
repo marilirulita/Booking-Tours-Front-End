@@ -1,0 +1,13 @@
+.content {
+  max-width: 500px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.newTourForm {
+  display: flex;
+  flex-direction: column;
+}
