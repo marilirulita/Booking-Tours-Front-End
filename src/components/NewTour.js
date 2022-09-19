@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postTourApi } from '../redux/tours/toursAPI';
 
 const NewTour = () => {
   const newTour = {
@@ -12,6 +14,11 @@ const NewTour = () => {
   };
 
   const [state, setState] = useState(newTour);
+  const dispatch = useDispatch();
+
+  const submitForm = () => {
+    dispatch(postTourApi(state));
+  };
 
   return (
     <div className="content">
@@ -24,7 +31,7 @@ const NewTour = () => {
         <input type="text" placeholder="City" value={state.city} onChange={(e) => setState({ ...state, city: e.target.value })} />
         <input type="number" placeholder="Cost" value={state.cost} onChange={(e) => setState({ ...state, cost: e.target.value })} />
         <input type="text" placeholder="Photo URL" value={state.photo} onChange={(e) => setState({ ...state, photo: e.target.value })} />
-        <button type="submit" value="add-tour">Create Tour</button>
+        <button type="submit" value="add-tour" onClick={submitForm}>Create Tour</button>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchApiDataTours } from '../redux/tours/toursAPI';
 
 const Main = () => {
-  const tours = useSelector((state) => state.tours);
+  const tours = useSelector((store) => store.tours);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchApiDataTours());

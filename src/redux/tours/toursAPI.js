@@ -1,4 +1,4 @@
-import { getApiDataTour, getApiDataTourDetail } from './tours';
+import { getApiDataTour, getApiDataTourDetail, addTour } from './tours';
 
 const URL = 'http://127.0.0.1:3000/tours';
 
@@ -16,4 +16,21 @@ export const GetTeamsAPI = (num) => async (dispatch) => {
   });
   const tours = await response.json();
   dispatch(getApiDataTourDetail(tours));
+};
+
+// Fetch function to create a new tour
+export const postTourApi = (newTour) => async (dispatch) => {
+  await fetch(URL, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(newTour),
+  });
+  dispatch(addTour(newTour));
 };
