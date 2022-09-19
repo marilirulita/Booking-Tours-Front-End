@@ -1,19 +1,19 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import { GetToursAPI } from '../redux/tours/toursAPI';
+import { GetReservationsAPI } from '../redux/reservations/reservations';
 
-const TourDetails = () => {
-  const { tourID } = useParams();
+const Reservations = () => {
+  const { userID } = useParams();
   const dispatch = useDispatch();
-  const Store = useSelector((store) => store.tours);
+  const reservations = useSelector((store) => store.reservations);
   useEffect(() => {
-    document.title = dispatch(GetToursAPI(tourID));
+    document.title = dispatch(GetReservationsAPI(userID));
   }, []);
-  const tour = Store[0];
-  if (tour !== undefined) {
-    return (
-      <div className="tour-details">
+
+  return (
+    reservations.map((tour) => (
+      <div className="tour-details" key={tour.id}>
         <div className="tour-photo">
           <img src={tour.photo} alt="Tour" />
         </div>
@@ -32,14 +32,12 @@ const TourDetails = () => {
             <p>Cost:</p>
             <p>{tour.cost}</p>
           </div>
-          <p className="tour-available">Available Now</p>
           <div className="tour-reserve-btn">
-            <button type="button">Reserve </button>
+            <button type="button">Cancel Reservation</button>
           </div>
         </div>
       </div>
-    );
-  }
-  return false;
+    ))
+  );
 };
-export default TourDetails;
+export default Reservations;
