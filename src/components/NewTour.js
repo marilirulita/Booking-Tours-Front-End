@@ -5,11 +5,11 @@ import { postTourApi } from '../redux/tours/toursAPI';
 const NewTour = () => {
   const newTour = {
     title: '',
-    duration: 0,
+    duration: '',
     description: '',
     city: '',
-    user_id: 0,
-    cost: 0,
+    user_id: '',
+    cost: '',
     photo: '',
   };
 
@@ -18,6 +18,7 @@ const NewTour = () => {
 
   const submitForm = () => {
     dispatch(postTourApi(state));
+    setState(newTour);
   };
 
   return (
