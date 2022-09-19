@@ -2,7 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchApiDataTours } from '../redux/tours/toursAPI';
 import { PostReservationsAPI } from '../redux/reservations/reservations';
-import '../styling/reservations.css';
+import '../styling/ReservationsForm.css';
 
 const Reservations = () => {
   const user = 1;
