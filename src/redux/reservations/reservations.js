@@ -35,6 +35,30 @@ export const reservationReducer = (state = initialState, action) => {
   }
 };
 
+export const PostReservationsAPI = (data, user) => async () => {
+  const reservationData = {
+    user_id: user,
+    tour_id: data.tour_id,
+    reservation_date: data.reservation_date,
+    persons_number: data.persons_number,
+  };
+  const response = await fetch(URL, {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(reservationData),
+  });
+  if (response.status === 201) {
+    console.log('Record created');
+  }
+};
+
 export const GetReservationsAPI = (id) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(id), {
     method: 'GET',

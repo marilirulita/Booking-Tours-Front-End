@@ -10,7 +10,7 @@ export const fetchApiDataTours = () => async (dispatch) => {
 };
 
 // Fetch function to get a single tour data from the API
-export const GetTeamsAPI = (num) => async (dispatch) => {
+export const GetToursAPI = (num) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(num), {
     method: 'GET',
   });
