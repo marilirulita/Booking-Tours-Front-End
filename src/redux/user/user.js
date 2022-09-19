@@ -17,7 +17,7 @@ export const getDataUser = (payload) => ({
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_USER:
-      return [...state, action.payload];
+      return [action.payload];
     case GET_DATA_USER:
       return [action.payload];
     default:
