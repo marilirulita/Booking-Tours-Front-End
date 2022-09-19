@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeTour } from '../redux/tours/tours';
-import { fetchApiDataTours } from '../redux/tours/toursAPI';
+import { fetchApiDataTours, deleteTourApi } from '../redux/tours/toursAPI';
 
 const DeleteTours = () => {
   const tours = useSelector((store) => store.tours);
@@ -12,7 +11,7 @@ const DeleteTours = () => {
   }, [dispatch]);
 
   const deleteTour = (id) => {
-    dispatch(removeTour(id));
+    dispatch(deleteTourApi(id));
   };
 
   return (
