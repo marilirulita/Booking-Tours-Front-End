@@ -57,7 +57,8 @@ export const PostReservationsAPI = (data, user) => async () => {
   if (response.status === 201) {
     console.log('Record created');
   }
-  
+};
+
 export const GetReservationsAPI = (id) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(id), {
     method: 'GET',
