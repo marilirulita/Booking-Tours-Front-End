@@ -1,4 +1,6 @@
-import { getApiDataTour, getApiDataTourDetail, addTour } from './tours';
+import {
+  getApiDataTour, getApiDataTourDetail, addTour, removeTour,
+} from './tours';
 
 const URL = 'http://127.0.0.1:3000/tours';
 
@@ -33,4 +35,19 @@ export const postTourApi = (newTour) => async (dispatch) => {
     body: JSON.stringify(newTour),
   });
   dispatch(addTour(newTour));
+};
+
+// Fetch function to delete a single tour data from the API
+export const deleteTourApi = (id) => async (dispatch) => {
+  await fetch(`${URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id,
+    }),
+  });
+  dispatch(removeTour(id));
 };

@@ -6,9 +6,11 @@ import TourDetails from './components/TourDetails';
 import NewTour from './components/NewTour';
 import ReservationsForm from './components/ReservationsForm';
 import Reservations from './components/Reservations';
+import DeleteTours from './components/DeleteTours';
 import './styling/TourDetails.css';
 import './styling/main.css';
 import './styling/newTourForm.css';
+import './styling/deleteTours.css';
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/NewTour" element={<NewTour />} />
           <Route path="/ReservationsForm" element={<ReservationsForm />} />
           <Route path="/Reservations/:userID" element={<Reservations />} />
+          <Route path="/DeleteTours" element={<DeleteTours />} />
         </Routes>
       </header>
     </div>
