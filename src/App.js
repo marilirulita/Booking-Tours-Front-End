@@ -8,6 +8,7 @@ import Reservations from './components/Reservations';
 import DeleteTours from './components/DeleteTours';
 import './styling/TourDetails.css';
 import './styling/main.css';
+import './styling/deleteTours.css';
 
 function App() {
   return (
