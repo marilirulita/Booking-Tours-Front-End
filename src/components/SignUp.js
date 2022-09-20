@@ -3,22 +3,6 @@ import { useDispatch } from 'react-redux';
 import { postUserApi } from '../redux/user/userAPI';
 
 const SignUp = () => {
-  /*
-  const signUp = {
-    name: '',
-    email: '',
-    password: '',
-  };
-
-  const [state, setState] = useState(signUp);
-  const dispatch = useDispatch();
-
-  const submitForm = () => {
-    dispatch(postUserApi(state));
-    setState(signUp);
-  };
-  */
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
