@@ -1,0 +1,10 @@
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.signUpForm .field {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
