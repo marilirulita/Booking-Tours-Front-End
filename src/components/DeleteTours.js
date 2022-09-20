@@ -15,18 +15,18 @@ const DeleteTours = () => {
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <h1>Delete Tours page</h1>
-      <div className='grid-container'>
-      {tours.map((tour) => (
-        <div key={tour.id} className='grid-element'>
-          <img src={tour.photo} alt={tour.title} />
-          <h2>{tour.title}</h2>
-          <p>{tour.description}</p>
-          <button type="button" onClick={() => deleteTour(tour.id)}>Delete Tour</button>
-        </div>
-      ))}
-            </div>
+      <div className="grid-container">
+        {tours.map((tour) => (
+          <div key={tour.id} className="grid-element">
+            <img src={tour.photo} alt={tour.title} />
+            <h2>{tour.title}</h2>
+            <p>{tour.description}</p>
+            <button type="button" onClick={() => deleteTour(tour.id)}>Delete Tour</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
