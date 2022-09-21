@@ -23,9 +23,10 @@ const Main = () => {
   const getToken = () => {
     if (user.token) {
       token = user.token;
-    } else {
-      navigate('/Login');
-    }
+    } 
+    // else {
+    //   navigate('/Login');
+    // }
   };
 
   const dispatch = useDispatch();

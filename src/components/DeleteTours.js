@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { deleteTourApi } from '../redux/tours/toursAPI';
@@ -9,6 +9,17 @@ const DeleteTours = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let token = '';
+
+  const redirectMain = () => {
+    if (tours.length < 1) {
+      navigate('/');
+    }
+  };
+
+  useEffect(() => {
+    redirectMain();
+  }, [tours]);
+
   const getToken = () => {
     if (user.token) {
       token = user.token;
