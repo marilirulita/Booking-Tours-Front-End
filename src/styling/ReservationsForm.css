@@ -44,7 +44,7 @@
 
 @media screen and (min-width: 450px) {
   .reservations {
-    height: 94vh;
+    height: 100vh;
   }
 
   .reservation-form {
@@ -52,6 +52,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    column-gap: 3%;
   }
 
   .reservation-form > * {
@@ -67,6 +68,6 @@
   .reservation-form button {
     margin-top: 0;
     padding: 5px;
-    flex-basis: 50%;
+    flex-basis: 30%;
   }
 }

@@ -1,4 +1,3 @@
-
 .tour-details {
   margin-left: 5%;
   margin-right: 5%;
@@ -67,10 +66,16 @@
   font-size: 20px;
 }
 
+.reservations-link {
+  text-decoration: none;
+  color:white;
+}
+
 @media screen and (min-width: 450px) {
   .tour-details {
     display: flex;
     column-gap: 2%;
+    height: 85vh;
   }
 
   .tour-data {
@@ -84,6 +89,6 @@
   }
 
   .tour-reserve-btn {
-    width: 200px;
+    min-width: 250px;
   }
 }
