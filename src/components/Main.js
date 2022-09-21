@@ -16,10 +16,17 @@ import 'swiper/css/pagination';
 const Main = () => {
   const tours = useSelector((store) => store.tours);
   const user = useSelector((store) => store.user);
+  let token = '';
+  const getToken = () => {
+    if (user.token) {
+      token = user.token;
+    }
+  };
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchApiDataTours(user[0].token));
+    getToken();
+    dispatch(fetchApiDataTours(token));
   }, [dispatch]);
 
   return (
