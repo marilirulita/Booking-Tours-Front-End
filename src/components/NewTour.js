@@ -22,17 +22,25 @@ const NewTour = () => {
   };
 
   return (
-    <div className="content">
-      <h1>Create a new Tour</h1>
+    <div className="newtour-content">
+      <h1>CREATE A NEW TOUR</h1>
       <div className="newTourForm">
-        <input type="number" placeholder="User id" value={state.user_id} onChange={(e) => setState({ ...state, user_id: e.target.value })} />
-        <input type="text" placeholder="Tour Title" value={state.title} onChange={(e) => setState({ ...state, title: e.target.value })} />
-        <input type="number" placeholder="Duration" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} />
-        <textarea placeholder="Description" value={state.description} onChange={(e) => setState({ ...state, description: e.target.value })} />
-        <input type="text" placeholder="City" value={state.city} onChange={(e) => setState({ ...state, city: e.target.value })} />
-        <input type="number" placeholder="Cost" value={state.cost} onChange={(e) => setState({ ...state, cost: e.target.value })} />
-        <input type="text" placeholder="Photo URL" value={state.photo} onChange={(e) => setState({ ...state, photo: e.target.value })} />
-        <button type="submit" value="add-tour" onClick={submitForm}>Create Tour</button>
+        <div className="form-column">
+          <input type="number" placeholder="User id" value={state.user_id} onChange={(e) => setState({ ...state, user_id: e.target.value })} />
+          <input type="text" placeholder="Tour Title" value={state.title} onChange={(e) => setState({ ...state, title: e.target.value })} />
+          <input type="number" placeholder="Duration" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} />
+          <textarea placeholder="Description" value={state.description} onChange={(e) => setState({ ...state, description: e.target.value })} />
+        </div>
+        <div className="column-rigth">
+          <div>
+            <input type="text" placeholder="City" value={state.city} onChange={(e) => setState({ ...state, city: e.target.value })} />
+            <input type="number" placeholder="Cost" value={state.cost} onChange={(e) => setState({ ...state, cost: e.target.value })} />
+            <input type="text" placeholder="Photo URL" value={state.photo} onChange={(e) => setState({ ...state, photo: e.target.value })} />
+          </div>
+          <div>
+            <button type="submit" value="add-tour" onClick={submitForm}>Create Tour</button>
+          </div>
+        </div>
       </div>
     </div>
   );
