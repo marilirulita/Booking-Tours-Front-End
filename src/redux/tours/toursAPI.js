@@ -2,11 +2,13 @@ import {
   getApiDataTour, getApiDataTourDetail, addTour, removeTour,
 } from './tours';
 
+const user = JSON.parse(localStorage.getItem('user'));
 const URL = 'http://127.0.0.1:3000/tours';
 
 // Fetch function to get all tour data from the API
 export const fetchApiDataTours = (token) => async (dispatch) => {
   const result = await fetch(URL, {
+    method: 'GET',
     headers: {
       Authorization: token,
     },
@@ -17,8 +19,12 @@ export const fetchApiDataTours = (token) => async (dispatch) => {
 
 // Fetch function to get a single tour data from the API
 export const GetToursAPI = (num) => async (dispatch) => {
+  console.log(user.token);
   const response = await fetch(URL.concat('/').concat(num), {
     method: 'GET',
+    headers: {
+      Authorization: user.token,
+    },
   });
   const tours = await response.json();
   dispatch(getApiDataTourDetail(tours));

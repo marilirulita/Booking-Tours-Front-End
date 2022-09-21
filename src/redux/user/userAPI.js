@@ -20,6 +20,7 @@ export const LoginAPI = (data) => async (dispatch) => {
   if (response.status === 200) {
     const data = await response.json();
     dispatch(getDataUser(data));
+    localStorage.setItem('user', JSON.stringify(data));
     window.location.href = '/';
   }
 };
