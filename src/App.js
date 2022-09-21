@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { Counter } from './components/Counter';
@@ -20,6 +21,7 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/Login" element={<Login />} />
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/counter" element={<Counter />} />
           <Route path="/TourDetails/:tourID" element={<TourDetails />} />
