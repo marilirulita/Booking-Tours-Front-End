@@ -32,7 +32,8 @@ const Main = () => {
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={25}
         slidesPerView={3}
-        loop
+        // loop
+        centeredSlides
         grabCursor="true"
         navigation
         pagination={{ clickable: true }}
@@ -70,6 +71,7 @@ const Main = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <Link to="/DeleteTours">Delete tour </Link>
     </div>
   );
 };

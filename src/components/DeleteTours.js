@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchApiDataTours, deleteTourApi } from '../redux/tours/toursAPI';
+import { useNavigate } from 'react-router';
+import { deleteTourApi } from '../redux/tours/toursAPI';
 
 const DeleteTours = () => {
   const tours = useSelector((store) => store.tours);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchApiDataTours());
-  }, [dispatch]);
-
+  const navigate = useNavigate();
   const deleteTour = (id) => {
     dispatch(deleteTourApi(id));
+    navigate('/DeleteTours');
   };
 
   return (

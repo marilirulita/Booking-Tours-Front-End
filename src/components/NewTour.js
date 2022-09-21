@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { postTourApi } from '../redux/tours/toursAPI';
 
 const NewTour = () => {
@@ -16,9 +17,11 @@ const NewTour = () => {
   const [state, setState] = useState(newTour);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
   const submitForm = () => {
     dispatch(postTourApi(state));
     setState(newTour);
+    navigate('/');
   };
 
   return (
