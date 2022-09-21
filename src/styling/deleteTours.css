@@ -28,9 +28,7 @@
   width: 100%;
   object-fit: cover;
 }
-.centered:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+
 .centered {
   position: absolute;
   bottom: 0;
@@ -42,6 +40,10 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+}
+
+.centered:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .centered p {
