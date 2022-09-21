@@ -16,20 +16,16 @@ import './styling/deleteTours.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/counter" element={<Counter />} />
-          <Route path="/TourDetails/:tourID" element={<TourDetails />} />
-          <Route path="/NewTour" element={<NewTour />} />
-          <Route path="/ReservationsForm" element={<ReservationsForm />} />
-          <Route path="/Reservations/:userID" element={<Reservations />} />
-          <Route path="/DeleteTours" element={<DeleteTours />} />
-        </Routes>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/SignUp" element={<SignUp />} />
+      <Route path="/counter" element={<Counter />} />
+      <Route path="/TourDetails/:tourID" element={<TourDetails />} />
+      <Route path="/NewTour" element={<NewTour />} />
+      <Route path="/ReservationsForm" element={<ReservationsForm />} />
+      <Route path="/Reservations/:userID" element={<Reservations />} />
+      <Route path="/DeleteTours" element={<DeleteTours />} />
+    </Routes>
   );
 }
 
