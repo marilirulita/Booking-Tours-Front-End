@@ -7,10 +7,18 @@ const DeleteTours = () => {
   const tours = useSelector((store) => store.tours);
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  let token = '';
+  const getToken = () => {
+    if (user.token) {
+      token = user.token;
+    } else {
+      navigate('/Login');
+    }
+  };
   const deleteTour = (id) => {
-    dispatch(deleteTourApi(id, user[0].token));
+    getToken();
+    dispatch(deleteTourApi(id, token));
     navigate('/DeleteTours');
   };
 

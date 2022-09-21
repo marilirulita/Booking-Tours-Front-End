@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 // import Swiper for carrousel
 import {
@@ -17,9 +18,13 @@ const Main = () => {
   const tours = useSelector((store) => store.tours);
   const user = useSelector((store) => store.user);
   let token = '';
+
+  const navigate = useNavigate();
   const getToken = () => {
     if (user.token) {
       token = user.token;
+    } else {
+      navigate('/Login');
     }
   };
 
