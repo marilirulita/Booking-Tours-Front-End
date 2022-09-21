@@ -5,8 +5,12 @@ import {
 const URL = 'http://127.0.0.1:3000/tours';
 
 // Fetch function to get all tour data from the API
-export const fetchApiDataTours = () => async (dispatch) => {
-  const result = await fetch(URL);
+export const fetchApiDataTours = (token) => async (dispatch) => {
+  const result = await fetch(URL, {
+    headers: {
+      Authorization: token,
+    },
+  });
   const resultJson = await result.json();
   dispatch(getApiDataTour(resultJson));
 };
@@ -21,7 +25,7 @@ export const GetToursAPI = (num) => async (dispatch) => {
 };
 
 // Fetch function to create a new tour
-export const postTourApi = (newTour) => async (dispatch) => {
+export const postTourApi = (newTour, token) => async (dispatch) => {
   await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -29,6 +33,7 @@ export const postTourApi = (newTour) => async (dispatch) => {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: token,
     },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
@@ -38,12 +43,13 @@ export const postTourApi = (newTour) => async (dispatch) => {
 };
 
 // Fetch function to delete a single tour data from the API
-export const deleteTourApi = (id) => async (dispatch) => {
+export const deleteTourApi = (id, token) => async (dispatch) => {
   await fetch(`${URL}/${id}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      Authorization: token,
     },
     body: JSON.stringify({
       id,
