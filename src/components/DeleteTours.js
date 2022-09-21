@@ -5,11 +5,12 @@ import { deleteTourApi } from '../redux/tours/toursAPI';
 
 const DeleteTours = () => {
   const tours = useSelector((store) => store.tours);
+  const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const deleteTour = (id) => {
-    dispatch(deleteTourApi(id));
+    dispatch(deleteTourApi(id, user[0].token));
     navigate('/DeleteTours');
   };
 

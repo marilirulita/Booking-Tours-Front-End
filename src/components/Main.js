@@ -15,9 +15,11 @@ import 'swiper/css/pagination';
 
 const Main = () => {
   const tours = useSelector((store) => store.tours);
+  const user = useSelector((store) => store.user);
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchApiDataTours());
+    dispatch(fetchApiDataTours(user[0].token));
   }, [dispatch]);
 
   return (

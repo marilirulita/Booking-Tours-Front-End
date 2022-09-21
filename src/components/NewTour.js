@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { postTourApi } from '../redux/tours/toursAPI';
 
 const NewTour = () => {
+  const user = useSelector((store) => store.user);
+
   const newTour = {
     title: '',
     duration: '',
     description: '',
     city: '',
-    user_id: '',
+    user_id: user.user_id,
     cost: '',
     photo: '',
   };
@@ -19,7 +21,7 @@ const NewTour = () => {
 
   const navigate = useNavigate();
   const submitForm = () => {
-    dispatch(postTourApi(state));
+    dispatch(postTourApi(state, user[0].token));
     setState(newTour);
     navigate('/');
   };
@@ -29,7 +31,7 @@ const NewTour = () => {
       <h1>CREATE A NEW TOUR</h1>
       <div className="newTourForm">
         <div className="form-column">
-          <input type="number" placeholder="User id" value={state.user_id} onChange={(e) => setState({ ...state, user_id: e.target.value })} />
+          <input type="number" placeholder="Name" value={state.name} />
           <input type="text" placeholder="Tour Title" value={state.title} onChange={(e) => setState({ ...state, title: e.target.value })} />
           <input type="number" placeholder="Duration" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} />
           <textarea placeholder="Description" value={state.description} onChange={(e) => setState({ ...state, description: e.target.value })} />
