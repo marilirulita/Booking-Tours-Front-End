@@ -1,5 +1,6 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import { GetToursAPI } from '../redux/tours/toursAPI';
 
@@ -34,7 +35,7 @@ const TourDetails = () => {
           </div>
           <p className="tour-available">Available Now</p>
           <div className="tour-reserve-btn">
-            <button type="button">Reserve </button>
+            <button type="button"><Link className="reservations-link" to="/ReservationsForm">Reservations</Link></button>
           </div>
         </div>
       </div>

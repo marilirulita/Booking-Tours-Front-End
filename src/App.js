@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
 import { Counter } from './components/Counter';
@@ -17,16 +18,21 @@ import './styling/deleteTours.css';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/SignUp" element={<SignUp />} />
-      <Route path="/counter" element={<Counter />} />
-      <Route path="/TourDetails/:tourID" element={<TourDetails />} />
-      <Route path="/NewTour" element={<NewTour />} />
-      <Route path="/ReservationsForm" element={<ReservationsForm />} />
-      <Route path="/Reservations/:userID" element={<Reservations />} />
-      <Route path="/DeleteTours" element={<DeleteTours />} />
-    </Routes>
+    <div className="App">
+      <header className="App-header">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/TourDetails/:tourID" element={<TourDetails />} />
+          <Route path="/NewTour" element={<NewTour />} />
+          <Route path="/ReservationsForm" element={<ReservationsForm />} />
+          <Route path="/Reservations/:userID" element={<Reservations />} />
+          <Route path="/DeleteTours" element={<DeleteTours />} />
+        </Routes>
+      </header>
+    </div>
   );
 }
 
