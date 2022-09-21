@@ -15,15 +15,16 @@ const DeleteTours = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Delete Tours page</h1>
+    <div className="delete-container">
       <div className="grid-container">
         {tours.map((tour) => (
           <div key={tour.id} className="grid-element">
             <img src={tour.photo} alt={tour.title} />
-            <h2>{tour.title}</h2>
-            <p>{tour.description}</p>
-            <button type="button" onClick={() => deleteTour(tour.id)}>Delete Tour</button>
+            <div className="centered">
+              <h2>{tour.title}</h2>
+              <p>{tour.description}</p>
+              <button type="button" onClick={() => deleteTour(tour.id)}>Delete </button>
+            </div>
           </div>
         ))}
       </div>
