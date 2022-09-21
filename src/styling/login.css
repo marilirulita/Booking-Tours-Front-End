@@ -1,24 +1,23 @@
-
-.reservations {
+.login {
   background-color: #97bf0f;
   height: 100vh;
   padding: 1%;
 }
 
-.reservations h1 {
+.login h1 {
   color: white;
   text-align: center;
   margin-top: 15%;
 }
 
-.reservation-form {
+.login-form {
   margin-top: 30%;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
 
-.reservation-form > * {
+.login-form > * {
   padding: 5%;
   border-radius: 20px;
   color: white;
@@ -27,12 +26,12 @@
   font-weight: bolder;
 }
 
-.reservation-form > *::placeholder {
+.login-form > *::placeholder {
   font-weight: bolder;
   color: white;
 }
 
-.reservation-form button {
+.login-form button {
   margin-top: 20%;
   background-color: white;
   border: none;
@@ -43,31 +42,32 @@
 }
 
 @media screen and (min-width: 450px) {
-  .reservations {
+  .login {
     height: 100vh;
   }
 
-  .reservation-form {
+  .login-form {
     margin-top: 5%;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    column-gap: 3%;
+    column-gap: 5%;
   }
 
-  .reservation-form > * {
+  .login-form > * {
     padding: 1%;
-    flex-basis: 25%;
+    flex-basis: 35%;
     text-align: center;
   }
 
-  .reservation-form > *::placeholder {
+  .login-form > *::placeholder {
     text-align: center;
   }
 
-  .reservation-form button {
-    margin-top: 0;
+  .login-form button {
+    margin-top: 1%;
     padding: 5px;
     flex-basis: 30%;
+    cursor: pointer;
   }
 }
