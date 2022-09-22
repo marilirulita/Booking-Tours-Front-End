@@ -11,7 +11,9 @@
 }
 
 .app-header {
+  /* stylelint-disable */
   width: -webkit-fill-available;
+  /* stylelint-enable */
 }
 
 .main-container {
