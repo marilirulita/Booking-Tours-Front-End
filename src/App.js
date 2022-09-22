@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Main from './components/Main';
@@ -18,8 +19,9 @@ import './styling/deleteTours.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <Navbar />
+      <header className="app-header">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/Login" element={<Login />} />
@@ -28,7 +30,7 @@ function App() {
           <Route path="/TourDetails/:tourID" element={<TourDetails />} />
           <Route path="/NewTour" element={<NewTour />} />
           <Route path="/ReservationsForm" element={<ReservationsForm />} />
-          <Route path="/Reservations/:userID" element={<Reservations />} />
+          <Route path="/Reservations" element={<Reservations />} />
           <Route path="/DeleteTours" element={<DeleteTours />} />
         </Routes>
       </header>
