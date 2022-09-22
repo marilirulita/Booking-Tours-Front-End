@@ -10,18 +10,14 @@ const DeleteTours = () => {
   const navigate = useNavigate();
   let token = '';
 
-  const redirectMain = () => {
+  useEffect(() => {
     if (tours.length < 1) {
       navigate('/');
     }
-  };
-
-  useEffect(() => {
-    redirectMain();
-  }, [tours]);
+  }, [navigate, tours]);
 
   const getToken = () => {
-    if (user.token) {
+    if (user.length > 0) {
       token = user.token;
     } else {
       navigate('/Login');

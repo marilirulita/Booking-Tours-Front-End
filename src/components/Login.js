@@ -1,19 +1,29 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import { LoginAPI } from '../redux/user/userAPI';
 import '../styling/login.css';
 
 const Login = () => {
+  const user = useSelector((store) => store.user);
   const [value, setValue] = useState({ email: '', password: '' });
   const dispatch = useDispatch();
   const onChange = (e) => {
     const newValue = { ...value, [e.target.id]: e.target.value };
     setValue(newValue);
   };
-  const Login = (e) => {
+  const navigate = useNavigate();
+  const Login = async (e) => {
     e.preventDefault();
     dispatch(LoginAPI(value));
   };
+
+  useEffect(() => {
+    if (user.length > 0) {
+      navigate('/');
+    }
+  }, [navigate, user]);
+
   return (
     <div className="login">
       <h1>Welcome!!!</h1>

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 // import Swiper for carrousel
 import {
@@ -19,21 +18,19 @@ const Main = () => {
   const user = useSelector((store) => store.user);
   let token = '';
 
-  const navigate = useNavigate();
   const getToken = () => {
-    if (user.token) {
-      token = user.token;
+    if (user.length > 0) {
+      token = user[0].token;
     }
-    // else {
-    //   navigate('/Login');
-    // }
   };
+  useEffect(() => {
+  }, [user]);
 
   const dispatch = useDispatch();
   useEffect(() => {
     getToken();
     dispatch(fetchApiDataTours(token));
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
     <div className="main-container">
@@ -86,7 +83,10 @@ const Main = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Link to="/DeleteTours">Delete tour </Link>
+      <div>
+        <Link to="/DeleteTours">Delete tour </Link>
+        <Link to="/NewTour">New tour </Link>
+      </div>
     </div>
   );
 };

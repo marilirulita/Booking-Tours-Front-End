@@ -21,7 +21,7 @@ export const LoginAPI = (data) => async (dispatch) => {
     const data = await response.json();
     dispatch(getDataUser(data));
     localStorage.setItem('user', JSON.stringify(data));
-    window.location.href = '/';
+    // window.location.href = '/';
   }
 };
 
