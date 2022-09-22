@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { deleteTourApi } from '../redux/tours/toursAPI';
@@ -7,10 +7,25 @@ const DeleteTours = () => {
   const tours = useSelector((store) => store.tours);
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
+  let token = '';
+
+  useEffect(() => {
+    if (tours.length < 1) {
+      navigate('/');
+    }
+  }, [navigate, tours]);
+
+  const getToken = () => {
+    if (user.length > 0) {
+      token = user.token;
+    } else {
+      navigate('/Login');
+    }
+  };
   const deleteTour = (id) => {
-    dispatch(deleteTourApi(id, user[0].token));
+    getToken();
+    dispatch(deleteTourApi(id, token));
     navigate('/DeleteTours');
   };
 

@@ -16,11 +16,21 @@ import 'swiper/css/pagination';
 const Main = () => {
   const tours = useSelector((store) => store.tours);
   const user = useSelector((store) => store.user);
+  let token = '';
+
+  const getToken = () => {
+    if (user.length > 0) {
+      token = user[0].token;
+    }
+  };
+  useEffect(() => {
+  }, [user]);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchApiDataTours(user[0].token));
-  }, [dispatch]);
+    getToken();
+    dispatch(fetchApiDataTours(token));
+  }, [dispatch, token]);
 
   return (
     <div className="main-container">
@@ -73,7 +83,10 @@ const Main = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Link to="/DeleteTours">Delete tour </Link>
+      <div>
+        <Link to="/DeleteTours">Delete tour </Link>
+        <Link to="/NewTour">New tour </Link>
+      </div>
     </div>
   );
 };

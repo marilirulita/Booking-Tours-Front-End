@@ -19,7 +19,6 @@ export const fetchApiDataTours = (token) => async (dispatch) => {
 
 // Fetch function to get a single tour data from the API
 export const GetToursAPI = (num) => async (dispatch) => {
-  console.log(user.token);
   const response = await fetch(URL.concat('/').concat(num), {
     method: 'GET',
     headers: {
