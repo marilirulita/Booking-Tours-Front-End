@@ -11,6 +11,18 @@
   align-items: center;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  background-color: #97bf0f;
+}
+
+.menu-btn {
+  background-color: transparent;
+  border: none;
+  font-size: xx-large;
+}
+
 .logo {
   width: 64px;
   height: 64px;
@@ -22,8 +34,18 @@
 }
 
 .nav-links {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
 }
+
+.logo-container.closeMenu {
+  display: none;
+  }
+  
+  .nav-links.closeMenu{
+  display: none;
+  }
 
 .nav-link {
   text-decoration: none;
@@ -33,11 +55,52 @@
 
 .activated {
   text-decoration: underline;
+  background-color: #7f7f7f
 }
 
 @media screen and (min-width: 450px) {
-  .nav-links {
-    display: flex;
-    flex-direction: column;
-  }
+  nav{
+    background-color: #97bf0f;
+    padding-right: 5%;
+    }
+
+    .navbar-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      padding-right: 0;
+      }
+      .btn-container {
+      justify-content: flex-start;
+      margin-bottom: 50%;
+      margin-top: 10%;
+      margin-left: 10%;
+      margin-right: 10%;
+      background-color: none;
+      }
+      
+      .logo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom:100%;
+      }
+      .logo {
+      width: 64px;
+      height: 64px;
+      margin-right: 1rem;
+      }
+      .app-title {
+      display: inline-block;
+      }
+      .activated {
+      text-decoration: underline;
+      background-color: #7f7f7f;
+      color: white;
+      }
+
+      .nav-links {
+        border-radius: 1rem;
+      }
+
 }
