@@ -13,7 +13,7 @@ const Login = () => {
     setValue(newValue);
   };
   const navigate = useNavigate();
-  const Login = async (e) => {
+  const Login = (e) => {
     e.preventDefault();
     dispatch(LoginAPI(value));
   };
