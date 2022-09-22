@@ -1,6 +1,6 @@
 .navbar-content {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   border-bottom: 1px solid #999;
   padding: 1rem;
@@ -21,6 +21,10 @@
   display: inline-block;
 }
 
+.nav-links {
+  display: none;
+}
+
 .nav-link {
   text-decoration: none;
   color: #3c85fe;
@@ -29,4 +33,11 @@
 
 .activated {
   text-decoration: underline;
+}
+
+@media screen and (min-width: 450px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+  }
 }
