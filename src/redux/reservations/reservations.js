@@ -59,9 +59,12 @@ export const PostReservationsAPI = (data) => async () => {
   }
 };
 
-export const GetReservationsAPI = (id) => async (dispatch) => {
-  const response = await fetch(URL.concat('/').concat(id), {
+export const GetReservationsAPI = () => async (dispatch) => {
+  const response = await fetch(URL, {
     method: 'GET',
+    headers: {
+      Authorization: user.token,
+    },
   });
   const tours = await response.json();
   dispatch(getApiDataReservation(tours));
