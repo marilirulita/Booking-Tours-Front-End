@@ -63,7 +63,7 @@
 @media screen and (min-width: 450px) {
   nav {
     background-color: #97bf0f;
-    padding-right: 0 2%;
+    padding: 0 2%;
   }
 
   .navbar-content {
