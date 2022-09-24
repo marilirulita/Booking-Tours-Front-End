@@ -60,14 +60,18 @@
   border: 1px solid white;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 950px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 580px) {
   .grid-container {
     grid-template-columns: 1fr;
+  }
+
+  .delete-container {
+    height: 100%;
   }
 }

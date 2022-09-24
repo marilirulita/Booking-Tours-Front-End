@@ -1,5 +1,5 @@
 import {
-  getDataUser, addUser,
+  getDataUser, addUser, removeUser,
 } from './user';
 
 const URL = 'http://127.0.0.1:3000/users';
@@ -49,4 +49,16 @@ export const postUserApi = (newUser) => async (dispatch) => {
     body: JSON.stringify(newUser),
   });
   dispatch(addUser(newUser));
+};
+
+export const deleteUserApi = (id, token) => async (dispatch) => {
+  await fetch(`${URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  });
+  dispatch(removeUser(id));
 };
