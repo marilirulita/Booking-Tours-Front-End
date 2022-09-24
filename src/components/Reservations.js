@@ -1,19 +1,36 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
-import { GetReservationsAPI } from '../redux/reservations/reservations';
+import { useParams, useNavigate } from 'react-router';
+import { GetReservationsAPI, deleteReservationApi } from '../redux/reservations/reservations';
 
 const Reservations = () => {
+  const user = useSelector((store) => store.user);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.length < 1) {
+      navigate('/Login');
+    }
+  }, [navigate, user]);
+
   const { userID } = useParams();
   const dispatch = useDispatch();
   const reservations = useSelector((store) => store.reservations);
   useEffect(() => {
     document.title = dispatch(GetReservationsAPI(userID));
-  }, []);
+  }, [reservations, dispatch, userID]);
+
+  const deleteReservation = (id) => {
+    dispatch(deleteReservationApi(id));
+    navigate('/Reservations');
+  };
 
   return (
     reservations.map((obj) => (
-      <div className="tour-details" key={obj.tour.id}>
+      <div
+        className="tour-details"
+        key={obj.reservation_id}
+      >
         <div className="tour-photo">
           <img src={obj.tour.photo} alt="Tour" />
         </div>
@@ -41,7 +58,7 @@ const Reservations = () => {
             <p>{obj.reservation_date}</p>
           </div>
           <div className="tour-reserve-btn">
-            <button type="button">Cancel Reservation</button>
+            <button type="button" onClick={() => deleteReservation(obj.reservation_id)}>Cancel Reservation</button>
           </div>
         </div>
       </div>

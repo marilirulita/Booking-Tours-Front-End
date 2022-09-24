@@ -10,7 +10,7 @@ const TourDetails = () => {
   const Store = useSelector((store) => store.tours);
   useEffect(() => {
     document.title = dispatch(GetToursAPI(tourID));
-  }, []);
+  }, [dispatch, tourID]);
   const tour = Store[0];
   if (tour !== undefined) {
     return (

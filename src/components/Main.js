@@ -34,10 +34,13 @@ const Main = () => {
 
   return (
     <div className="main-container">
-      <header>
+      <div className="header">
         <h1>LATEST TOURS</h1>
-        <p>Please select a Tour</p>
-      </header>
+        <p>
+          {user.length > 0 ? `Hello ${user[0].user.name}, ` : ''}
+          Please select a Tour
+        </p>
+      </div>
       <Swiper
         className="slide-container"
       // install Swiper modules
@@ -83,10 +86,6 @@ const Main = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div>
-        <Link to="/DeleteTours">Delete tour </Link>
-        <Link to="/NewTour">New tour </Link>
-      </div>
     </div>
   );
 };

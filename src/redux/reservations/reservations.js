@@ -34,7 +34,7 @@ export const reservationReducer = (state = initialState, action) => {
   }
 };
 
-export const PostReservationsAPI = (data) => async () => {
+export const PostReservationsAPI = (data) => async (dispatch) => {
   const reservationData = {
     user_id: user.user.user_id,
     tour_id: data.tour_id,
@@ -54,8 +54,9 @@ export const PostReservationsAPI = (data) => async () => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(reservationData),
   });
-  if (response.status === 201) {
-    window.location.href = `/TourDetails/${data.tour_id}`;
+  if (response.status === 200) {
+    // window.location.href = `/TourDetails/${data.tour_id}`;
+    dispatch(addReservation(reservationData));
   }
 };
 
@@ -67,5 +68,20 @@ export const GetReservationsAPI = () => async (dispatch) => {
     },
   });
   const tours = await response.json();
-  dispatch(getApiDataReservation(tours));
+  if (response.status === 200) {
+    dispatch(getApiDataReservation(tours));
+  }
+  // dispatch(getApiDataReservation(tours));
+};
+
+export const deleteReservationApi = (id) => async (dispatch) => {
+  await fetch(`${URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: user.token,
+    },
+  });
+  dispatch(removeReservation(id));
 };

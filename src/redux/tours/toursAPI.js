@@ -31,7 +31,7 @@ export const GetToursAPI = (num) => async (dispatch) => {
 
 // Fetch function to create a new tour
 export const postTourApi = (newTour, token) => async (dispatch) => {
-  await fetch(URL, {
+  const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
@@ -44,7 +44,10 @@ export const postTourApi = (newTour, token) => async (dispatch) => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(newTour),
   });
-  dispatch(addTour(newTour));
+  if (response.status === 200) {
+    dispatch(addTour(newTour));
+  }
+  // dispatch(addTour(newTour));
 };
 
 // Fetch function to delete a single tour data from the API
@@ -56,9 +59,6 @@ export const deleteTourApi = (id, token) => async (dispatch) => {
       'Content-Type': 'application/json',
       Authorization: token,
     },
-    body: JSON.stringify({
-      id,
-    }),
   });
   dispatch(removeTour(id));
 };

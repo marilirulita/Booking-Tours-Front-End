@@ -11,7 +11,6 @@ import ReservationsForm from './components/ReservationsForm';
 import Reservations from './components/Reservations';
 import DeleteTours from './components/DeleteTours';
 import './styling/Navbar.css';
-import './styling/SignUp.css';
 import './styling/TourDetails.css';
 import './styling/main.css';
 import './styling/newTourForm.css';

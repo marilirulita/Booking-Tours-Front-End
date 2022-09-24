@@ -41,6 +41,26 @@
   font-size: 20px;
 }
 
+.aditional-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aditional-links h3,
+.aditional-links p,
+.aditional-links a {
+  color: white;
+  margin: 3px 0;
+}
+
+.aditional-links a:hover {
+  background-color: rgb(89, 122, 83);
+  padding: 10px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
 @media screen and (min-width: 450px) {
   .login {
     height: 100vh;

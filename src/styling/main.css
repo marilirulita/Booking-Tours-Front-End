@@ -24,7 +24,7 @@
   min-height: 100vh;
 }
 
-.main-container header {
+.main-container .header {
   display: flex;
   flex-direction: column;
   align-items: center;
