@@ -1,15 +1,32 @@
 import { NavLink } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeUser } from '../redux/user/user';
+import { deleteUserApi } from '../redux/user/userAPI';
 
 const Navbar = () => {
+  const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
   const activeLink = ({ isActive }) => `nav-link${(isActive ? ' activated' : '')}`;
   const [navbarOpen, setNavbarOpen] = useState(false);
   const handleToggle = () => {
     setNavbarOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   const closeMenu = () => {
     setNavbarOpen(true);
+  };
+
+  const signOut = () => {
+    dispatch(removeUser());
+  };
+
+  const deleteAccount = () => {
+    dispatch(deleteUserApi(user[0].user.user_id, user[0].token));
   };
 
   return (
@@ -28,6 +45,13 @@ const Navbar = () => {
         <NavLink to="/ReservationsForm" className={activeLink} onClick={() => closeMenu()}>Reserve Tour</NavLink>
         <NavLink to="/DeleteTours" className={activeLink} onClick={() => closeMenu()}>Delete Tour</NavLink>
       </div>
+      {user.length > 0
+        ? (
+          <div className={`sign-out ${navbarOpen ? ' closeMenu' : ''}`}>
+            <button className="sign-out-btn" type="button" onClick={signOut}>Sign Out</button>
+            <button className="sign-out-btn" type="button" onClick={deleteAccount}>Delete Account</button>
+          </div>
+        ) : ('')}
     </nav>
   );
 };

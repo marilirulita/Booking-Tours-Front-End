@@ -16,36 +16,35 @@ import 'swiper/css/pagination';
 const Main = () => {
   const tours = useSelector((store) => store.tours);
   const user = useSelector((store) => store.user);
-  let token = '';
+  const dispatch = useDispatch();
 
-  const getToken = () => {
-    if (user.length > 0) {
-      token = user[0].token;
-    }
-  };
+  useEffect(() => {
+    dispatch(fetchApiDataTours());
+  }, [dispatch]);
+
   useEffect(() => {
   }, [user]);
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    getToken();
-    dispatch(fetchApiDataTours(token));
-  }, [dispatch, token]);
+  }, [tours]);
 
   return (
     <div className="main-container">
-      <header>
+      <div className="header">
         <h1>LATEST TOURS</h1>
-        <p>Please select a Tour</p>
-      </header>
+        <p>
+          {user.length > 0 ? `Hello ${user[0].user.name}, ` : ''}
+          Please select a Tour
+        </p>
+      </div>
       <Swiper
         className="slide-container"
       // install Swiper modules
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={25}
-        slidesPerView={3}
+        slidesPerView={2}
         // loop
-        centeredSlides
+        // centeredSlides
         grabCursor="true"
         navigation
         pagination={{ clickable: true }}
@@ -54,13 +53,12 @@ const Main = () => {
           0: {
             slidesPerView: 1,
           },
-          750: {
+          850: {
             slidesPerView: 2,
           },
-          1100: {
-            slidesPerView: 3,
-          },
         }}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
       >
         {tours.map((tour) => (
           <SwiperSlide key={tour.id}>
@@ -83,10 +81,6 @@ const Main = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div>
-        <Link to="/DeleteTours">Delete tour </Link>
-        <Link to="/NewTour">New tour </Link>
-      </div>
     </div>
   );
 };

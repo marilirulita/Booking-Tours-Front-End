@@ -1,11 +1,21 @@
 import { React, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { fetchApiDataTours } from '../redux/tours/toursAPI';
 import { PostReservationsAPI } from '../redux/reservations/reservations';
 import '../styling/ReservationsForm.css';
 
 const Reservations = () => {
   const user = JSON.parse(localStorage.getItem('user'));
+  const userStore = useSelector((store) => store.user);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userStore.length < 1) {
+      navigate('/Login');
+    }
+  }, [navigate, userStore]);
+
   const { token } = user;
 
   const [value, setValue] = useState({
@@ -20,11 +30,16 @@ const Reservations = () => {
   const Store = useSelector((store) => store.tours);
   useEffect(() => {
     document.title = dispatch(fetchApiDataTours(token));
-  }, []);
+  }, [dispatch, token]);
 
   const Reserve = (e) => {
     e.preventDefault();
-    dispatch(PostReservationsAPI(value));
+    if (value.tour_id > 0) {
+      dispatch(PostReservationsAPI(value));
+      navigate('/Reservations');
+    } else {
+      alert('Please select a tour');
+    }
   };
   return (
     <div className="reservations">

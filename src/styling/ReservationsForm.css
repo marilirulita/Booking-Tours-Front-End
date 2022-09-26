@@ -3,6 +3,7 @@
   background-color: #97bf0f;
   height: 100vh;
   padding: 1%;
+  flex: 1;
 }
 
 .reservations h1 {

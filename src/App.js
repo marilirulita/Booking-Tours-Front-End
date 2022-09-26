@@ -11,7 +11,6 @@ import ReservationsForm from './components/ReservationsForm';
 import Reservations from './components/Reservations';
 import DeleteTours from './components/DeleteTours';
 import './styling/Navbar.css';
-import './styling/SignUp.css';
 import './styling/TourDetails.css';
 import './styling/main.css';
 import './styling/newTourForm.css';
@@ -21,19 +20,17 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      <header className="app-header">
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-          <Route path="/counter" element={<Counter />} />
-          <Route path="/TourDetails/:tourID" element={<TourDetails />} />
-          <Route path="/NewTour" element={<NewTour />} />
-          <Route path="/ReservationsForm" element={<ReservationsForm />} />
-          <Route path="/Reservations" element={<Reservations />} />
-          <Route path="/DeleteTours" element={<DeleteTours />} />
-        </Routes>
-      </header>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/counter" element={<Counter />} />
+        <Route path="/TourDetails/:tourID" element={<TourDetails />} />
+        <Route path="/NewTour" element={<NewTour />} />
+        <Route path="/ReservationsForm" element={<ReservationsForm />} />
+        <Route path="/Reservations" element={<Reservations />} />
+        <Route path="/DeleteTours" element={<DeleteTours />} />
+      </Routes>
     </div>
   );
 }
