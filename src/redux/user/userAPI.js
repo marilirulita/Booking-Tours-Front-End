@@ -21,11 +21,9 @@ export const LoginAPI = (data) => async (dispatch) => {
     const data = await response.json();
     dispatch(getDataUser(data));
     localStorage.setItem('user', JSON.stringify(data));
-    // window.location.href = '/';
   }
 };
 
-// Fetch function to get a single user data from the API
 export const GetUserAPI = (num) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(num), {
     method: 'GET',
@@ -34,7 +32,6 @@ export const GetUserAPI = (num) => async (dispatch) => {
   dispatch(getDataUser(user));
 };
 
-// Fetch function to create a new user
 export const postUserApi = (newUser) => async () => {
   await fetch(URL, {
     method: 'POST',
