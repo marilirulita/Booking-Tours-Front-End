@@ -5,6 +5,7 @@
   align-items: center;
   background-color: #97bf0f;
   height: 100vh;
+  flex: 1;
 }
 
 .newtour-content h1 {

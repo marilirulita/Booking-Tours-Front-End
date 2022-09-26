@@ -6,10 +6,15 @@ import { deleteTourApi } from '../redux/tours/toursAPI';
 const DeleteTours = () => {
   const user = useSelector((store) => store.user);
   const tours = useSelector((store) => store.tours);
-  let token = '';
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user.length < 1) {
+      navigate('/Login');
+    }
+  }, [navigate, user]);
 
   useEffect(() => {
     if (tours.length < 1) {
@@ -17,17 +22,10 @@ const DeleteTours = () => {
     }
   }, [navigate, tours]);
 
-  useEffect(() => {
-    if (user.length > 0) {
-      token = user[0].token;
-    } else {
-      navigate('/Login');
-    }
-  }, [navigate, user]);
-
   const deleteTour = (id) => {
-    dispatch(deleteTourApi(id, token));
-    navigate('/DeleteTours');
+    if (user.length > 0) {
+      dispatch(deleteTourApi(id, user[0].token));
+    }
   };
 
   return (
@@ -39,7 +37,17 @@ const DeleteTours = () => {
             <div className="centered">
               <h2>{tour.title}</h2>
               <p>{tour.description}</p>
-              <button type="button" onClick={() => deleteTour(tour.id)}>Delete </button>
+              {user.length > 0 ? (
+                <button
+                  type="button"
+                  className={`${user[0].user.user_id === tour.user_id ? 'available' : 'disable'}`}
+                  onClick={() => deleteTour(tour.id)}
+                >
+                  Delete
+                </button>
+              ) : (
+                ''
+              )}
             </div>
           </div>
         ))}

@@ -1,5 +1,5 @@
 import {
-  getDataUser, addUser, removeUser,
+  getDataUser, removeUser,
 } from './user';
 
 const URL = 'http://127.0.0.1:3000/users';
@@ -35,7 +35,7 @@ export const GetUserAPI = (num) => async (dispatch) => {
 };
 
 // Fetch function to create a new user
-export const postUserApi = (newUser) => async (dispatch) => {
+export const postUserApi = (newUser) => async () => {
   await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -48,7 +48,6 @@ export const postUserApi = (newUser) => async (dispatch) => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(newUser),
   });
-  dispatch(addUser(newUser));
 };
 
 export const deleteUserApi = (id, token) => async (dispatch) => {

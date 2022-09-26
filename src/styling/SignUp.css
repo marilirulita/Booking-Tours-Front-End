@@ -1,23 +1,24 @@
-.login {
+.signup {
   background-color: #97bf0f;
   height: 100vh;
   padding: 1%;
+  flex: 1;
 }
 
-.login h1 {
+.signup h1 {
   color: white;
   text-align: center;
   margin-top: 15%;
 }
 
-.login-form {
+.signup-form {
   margin-top: 30%;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
 
-.login-form > * {
+.signup-form > * {
   padding: 5%;
   border-radius: 20px;
   color: white;
@@ -26,12 +27,12 @@
   font-weight: bolder;
 }
 
-.login-form > *::placeholder {
+.signup-form > *::placeholder {
   font-weight: bolder;
   color: white;
 }
 
-.login-form button {
+.signup-form button {
   margin-top: 20%;
   background-color: white;
   border: none;
@@ -62,29 +63,29 @@
 }
 
 @media screen and (min-width: 450px) {
-  .login {
+  .signup {
     height: 100vh;
   }
 
-  .login-form {
+  .signup-form {
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 5%;
-    max-width: fit-content;
+    width: fit-content;
     margin: 5% auto;
   }
 
-  .login-form > * {
+  .signup-form > * {
     padding: 5%;
     flex-basis: 35%;
     text-align: center;
   }
 
-  .login-form > *::placeholder {
+  .signup-form > *::placeholder {
     text-align: center;
   }
 
-  .login-form button {
+  .signup-form button {
     margin-top: 1%;
     padding: 5px;
     flex-basis: 30%;
