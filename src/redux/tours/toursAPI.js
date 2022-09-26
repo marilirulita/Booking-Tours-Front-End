@@ -3,7 +3,7 @@ import {
 } from './tours';
 
 const user = JSON.parse(localStorage.getItem('user'));
-const URL = 'http://127.0.0.1:3000/tours';
+const URL = 'https://tourify-app.herokuapp.com/tours';
 
 // Fetch function to get all tour data from the API
 export const fetchApiDataTours = () => async (dispatch) => {
@@ -41,7 +41,7 @@ export const postTourApi = (newTour, token) => async (dispatch) => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(newTour),
   });
-  if (response.status === 200) {
+  if (response.status === 201) {
     dispatch(addTour(newTour));
   }
 };
