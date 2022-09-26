@@ -59,7 +59,7 @@ const Reservations = () => {
               <p>{obj.reservation_date}</p>
             </div>
             <div className="tour-reserve-btn">
-              <button type="button" onClick={() => deleteReservation(obj.reservation_id)}>Cancel Reservation</button>
+              <button className="cancel-btn" type="button" onClick={() => deleteReservation(obj.reservation_id)}>Cancel Reservation</button>
             </div>
           </div>
         </div>

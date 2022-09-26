@@ -35,7 +35,7 @@ const TourDetails = () => {
           </div>
           <p className="tour-available">Available Now</p>
           <div className="tour-reserve-btn">
-            <button type="button"><Link className="reservations-link" to="/ReservationsForm">Reservations</Link></button>
+            <button className="reservations-btn" type="button"><Link className="reservations-link" to="/ReservationsForm">Reservations</Link></button>
           </div>
         </div>
       </div>

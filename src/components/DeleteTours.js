@@ -40,7 +40,7 @@ const DeleteTours = () => {
               {user.length > 0 ? (
                 <button
                   type="button"
-                  className={`${user[0].user.user_id === tour.user_id ? 'available' : 'disable'}`}
+                  className={`${user[0].user.user_id === tour.user_id ? 'available delete-btn' : 'disable delete-btn'}`}
                   onClick={() => deleteTour(tour.id)}
                 >
                   Delete

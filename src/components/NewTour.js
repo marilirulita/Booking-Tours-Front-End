@@ -47,7 +47,7 @@ const NewTour = () => {
       <div className="newTourForm">
         <div className="form-column">
           <input type="text" placeholder="Tour Title" value={state.title} onChange={(e) => setState({ ...state, title: e.target.value })} required />
-          <input type="number" placeholder="Duration" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} required />
+          <input type="number" placeholder="Duration (weeks)" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} required />
           <textarea placeholder="Description" value={state.description} onChange={(e) => setState({ ...state, description: e.target.value })} required />
         </div>
         <div className="column-rigth">
@@ -57,7 +57,7 @@ const NewTour = () => {
             <input type="text" placeholder="Photo URL" value={state.photo} onChange={(e) => setState({ ...state, photo: e.target.value })} required />
           </div>
           <div>
-            <button type="submit" value="add-tour" onClick={submitForm}>Create Tour</button>
+            <button className="add-tour-btn" type="submit" value="add-tour" onClick={submitForm}>Create Tour</button>
           </div>
         </div>
       </div>
