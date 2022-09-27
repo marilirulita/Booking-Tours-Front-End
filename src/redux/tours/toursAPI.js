@@ -1,8 +1,7 @@
 import {
-  getApiDataTour, getApiDataTourDetail, addTour, removeTour,
+  getApiDataTour, getApiDataTourDetail, removeTour,
 } from './tours';
 
-const user = JSON.parse(localStorage.getItem('user'));
 const URL = 'https://tourify-app.herokuapp.com/tours';
 
 export const fetchApiDataTours = () => async (dispatch) => {
@@ -15,16 +14,12 @@ export const fetchApiDataTours = () => async (dispatch) => {
 
 export const GetToursAPI = (num) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(num), {
-    method: 'GET',
-    headers: {
-      Authorization: user.token,
-    },
   });
   const tours = await response.json();
   dispatch(getApiDataTourDetail(tours));
 };
 
-export const postTourApi = (newTour, token) => async (dispatch) => {
+export const postTourApi = (newTour, token) => async () => {
   const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -39,7 +34,7 @@ export const postTourApi = (newTour, token) => async (dispatch) => {
     body: JSON.stringify(newTour),
   });
   if (response.status === 201) {
-    dispatch(addTour(newTour));
+    fetchApiDataTours();
   }
 };
 
