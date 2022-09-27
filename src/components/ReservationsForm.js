@@ -38,6 +38,7 @@ const Reservations = () => {
       dispatch(PostReservationsAPI(value));
       navigate('/Reservations');
     } else {
+      // eslint-disable-next-line
       alert('Please select a tour');
     }
   };
