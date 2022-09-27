@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+.logo-container img {
+  width: 130px;
+  border-radius: 25px;
+}
+
 .btn-container {
   display: flex;
   justify-content: flex-end;
@@ -115,7 +120,6 @@
   .logo-container {
     display: flex;
     align-items: center;
-    margin-bottom: 25%;
   }
 
   .logo {
