@@ -17,13 +17,19 @@ const Reservations = () => {
   const dispatch = useDispatch();
   const reservations = useSelector((store) => store.reservations);
   useEffect(() => {
-    document.title = dispatch(GetReservationsAPI(userID));
+    if (user.length > 0) {
+      dispatch(GetReservationsAPI(user[0].token));
+    }
+    
   }, [reservations, dispatch, userID]);
 
   const deleteReservation = (id) => {
     dispatch(deleteReservationApi(id));
     navigate('/Reservations');
   };
+  useEffect(() => {
+    document.title = "My reservations";  
+  }, []); 
 
   if (reservations !== undefined) {
     return (

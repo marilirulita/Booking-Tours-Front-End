@@ -33,11 +33,11 @@ export const reservationReducer = (state = initialState, action) => {
   }
 };
 
-export const GetReservationsAPI = () => async (dispatch) => {
+export const GetReservationsAPI = (token) => async (dispatch) => {
   const response = await fetch(URL, {
     method: 'GET',
     headers: {
-      Authorization: user.token,
+      Authorization: token,
     },
   });
   const tours = await response.json();
