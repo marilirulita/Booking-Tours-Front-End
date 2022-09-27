@@ -12,6 +12,11 @@ const TourDetails = () => {
     document.title = dispatch(GetToursAPI(tourID));
   }, [dispatch, tourID]);
   const tour = Store[0];
+
+  useEffect(() => {
+    document.title = 'Tour Details';
+  }, []);
+
   if (tour !== undefined) {
     return (
       <div className="tour-details">
@@ -35,7 +40,7 @@ const TourDetails = () => {
           </div>
           <p className="tour-available">Available Now</p>
           <div className="tour-reserve-btn">
-            <button type="button"><Link className="reservations-link" to="/ReservationsForm">Reservations</Link></button>
+            <button className="reservations-btn" type="button"><Link className="reservations-link" to="/ReservationsForm">Reservations</Link></button>
           </div>
         </div>
       </div>

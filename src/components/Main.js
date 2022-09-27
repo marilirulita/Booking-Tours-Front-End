@@ -28,6 +28,10 @@ const Main = () => {
   useEffect(() => {
   }, [tours]);
 
+  useEffect(() => {
+    document.title = 'Home';
+  }, []);
+
   return (
     <div className="main-container">
       <div className="header">
@@ -57,8 +61,6 @@ const Main = () => {
             slidesPerView: 2,
           },
         }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         {tours.map((tour) => (
           <SwiperSlide key={tour.id}>
@@ -75,7 +77,7 @@ const Main = () => {
               <div className="card-content">
                 <h3 className="name">{tour.title}</h3>
                 <span className="dots-division">...............</span>
-                <p className="description">{tour.description}</p>
+                <p className="description">{`${tour.description.substr(0, 50)}...`}</p>
               </div>
             </Link>
           </SwiperSlide>

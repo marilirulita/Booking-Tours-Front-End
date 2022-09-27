@@ -41,6 +41,11 @@ const Reservations = () => {
       alert('Please select a tour');
     }
   };
+
+  useEffect(() => {
+    document.title = 'Create a Reservation';
+  }, []);
+
   return (
     <div className="reservations">
       <h1>Reservations</h1>

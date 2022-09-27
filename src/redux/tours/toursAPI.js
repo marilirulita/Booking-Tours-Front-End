@@ -3,9 +3,8 @@ import {
 } from './tours';
 
 const user = JSON.parse(localStorage.getItem('user'));
-const URL = 'http://127.0.0.1:3000/tours';
+const URL = 'https://tourify-app.herokuapp.com/tours';
 
-// Fetch function to get all tour data from the API
 export const fetchApiDataTours = () => async (dispatch) => {
   const result = await fetch(URL);
   const resultJson = await result.json();
@@ -14,7 +13,6 @@ export const fetchApiDataTours = () => async (dispatch) => {
   }
 };
 
-// Fetch function to get a single tour data from the API
 export const GetToursAPI = (num) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(num), {
     method: 'GET',
@@ -26,7 +24,6 @@ export const GetToursAPI = (num) => async (dispatch) => {
   dispatch(getApiDataTourDetail(tours));
 };
 
-// Fetch function to create a new tour
 export const postTourApi = (newTour, token) => async (dispatch) => {
   const response = await fetch(URL, {
     method: 'POST',
@@ -41,14 +38,12 @@ export const postTourApi = (newTour, token) => async (dispatch) => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(newTour),
   });
-  if (response.status === 200) {
+  if (response.status === 201) {
     dispatch(addTour(newTour));
   }
 };
 
-// Fetch function to delete a single tour data from the API
 export const deleteTourApi = (id, token) => async (dispatch) => {
-  console.log(id, token);
   const response = await fetch(`${URL}/${id}`, {
     method: 'DELETE',
     headers: {
@@ -57,9 +52,7 @@ export const deleteTourApi = (id, token) => async (dispatch) => {
       Authorization: token,
     },
   });
-  console.log(response);
   if (response.status === 204) {
     dispatch(removeTour(id));
   }
-  // dispatch(removeTour(id));
 };

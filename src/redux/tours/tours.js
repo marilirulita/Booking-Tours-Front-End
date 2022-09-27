@@ -5,7 +5,6 @@ const GET_API_DATA_TOUR_DETAIL = 'GET_API_DATA_TOUR_DETAIL';
 
 const initialState = [];
 
-// Action Creators
 export const addTour = (payload) => ({
   type: ADD_TOUR,
   payload,

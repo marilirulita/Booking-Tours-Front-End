@@ -69,6 +69,10 @@
   font-size: 20px;
 }
 
+.add-tour-btn {
+  cursor: pointer;
+}
+
 @media (max-width: 500px) {
   .newTourForm {
     flex-direction: column;

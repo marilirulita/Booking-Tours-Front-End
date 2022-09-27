@@ -72,6 +72,10 @@
   color: white;
 }
 
+.reservations-btn {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 450px) {
   .tour-details {
     display: flex;
@@ -83,6 +87,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1;
   }
 
   .tour-title {

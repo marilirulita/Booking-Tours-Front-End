@@ -4,7 +4,6 @@ const GET_DATA_USER = 'GET_DATA_USER';
 
 const initialState = [];
 
-// Action Creators
 export const addUser = (payload) => ({
   type: ADD_USER,
   payload,
