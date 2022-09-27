@@ -22,6 +22,7 @@
   border: none;
   font-size: xx-large;
   cursor: pointer;
+  margin-right: 2%;
 }
 
 .logo {
@@ -39,10 +40,18 @@
   flex-direction: column;
   background-color: white;
   margin-bottom: 0;
+  overflow: hidden;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #292c29;
+  padding: 1rem;
 }
 
 .nav-link:hover {
   background-color: #00081d13;
+  color: black;
 }
 
 .logo-container.closeMenu {
@@ -51,12 +60,6 @@
 
 .nav-links.closeMenu {
   display: none;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #292c29;
-  padding: 1rem;
 }
 
 .activated {
