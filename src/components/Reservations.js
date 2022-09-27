@@ -20,16 +20,15 @@ const Reservations = () => {
     if (user.length > 0) {
       dispatch(GetReservationsAPI(user[0].token));
     }
-    
-  }, [reservations, dispatch, userID]);
+  }, [reservations, dispatch, userID, user]);
 
   const deleteReservation = (id) => {
     dispatch(deleteReservationApi(id));
     navigate('/Reservations');
   };
   useEffect(() => {
-    document.title = "My reservations";  
-  }, []); 
+    document.title = 'My reservations';
+  }, []);
 
   if (reservations !== undefined) {
     return (

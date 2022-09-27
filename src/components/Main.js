@@ -29,9 +29,8 @@ const Main = () => {
   }, [tours]);
 
   useEffect(() => {
-    document.title = "Main";  
+    document.title = 'Main';
   }, []);
-
 
   return (
     <div className="main-container">
@@ -78,7 +77,7 @@ const Main = () => {
               <div className="card-content">
                 <h3 className="name">{tour.title}</h3>
                 <span className="dots-division">...............</span>
-                <p className="description">{tour.description.substr(0, 50) + '...'}</p>
+                <p className="description">{`${tour.description.substr(0, 50)}...`}</p>
               </div>
             </Link>
           </SwiperSlide>
