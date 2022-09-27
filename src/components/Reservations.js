@@ -30,6 +30,10 @@ const Reservations = () => {
     document.title = 'My reservations';
   }, []);
 
+  useEffect(() => {
+    document.title = 'My Reservations';
+  }, []);
+
   if (reservations !== undefined) {
     return (
       <div>

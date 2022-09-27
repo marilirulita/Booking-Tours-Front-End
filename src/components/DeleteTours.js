@@ -28,6 +28,10 @@ const DeleteTours = () => {
     }
   };
 
+  useEffect(() => {
+    document.title = 'Delete Tours';
+  }, []);
+
   return (
     <div className="delete-container">
       <div className="grid-container">

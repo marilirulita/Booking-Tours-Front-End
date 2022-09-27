@@ -41,6 +41,10 @@ const NewTour = () => {
     }
   };
 
+  useEffect(() => {
+    document.title = 'Create New Tour';
+  }, []);
+
   return (
     <div className="newtour-content">
       <h1>CREATE A NEW TOUR</h1>

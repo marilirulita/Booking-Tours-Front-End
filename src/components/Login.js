@@ -25,6 +25,10 @@ const Login = () => {
     }
   }, [navigate, user]);
 
+  useEffect(() => {
+    document.title = 'Login';
+  }, []);
+
   return (
     <div className="login">
       <h1>Welcome!!!</h1>

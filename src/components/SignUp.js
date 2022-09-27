@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { postUserApi } from '../redux/user/userAPI';
@@ -25,6 +25,10 @@ const SignUp = () => {
     setPassword('');
     navigate('/Login');
   };
+
+  useEffect(() => {
+    document.title = 'Register';
+  }, []);
 
   return (
     <div className="signup">

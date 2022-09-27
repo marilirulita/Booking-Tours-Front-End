@@ -12,6 +12,11 @@ const TourDetails = () => {
     document.title = dispatch(GetToursAPI(tourID));
   }, [dispatch, tourID]);
   const tour = Store[0];
+
+  useEffect(() => {
+    document.title = 'Tour Details';
+  }, []);
+
   if (tour !== undefined) {
     return (
       <div className="tour-details">
