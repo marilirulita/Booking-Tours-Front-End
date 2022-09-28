@@ -8,6 +8,9 @@
 ## Live Demo
 [Link Live Demo](https://tourify-app.netlify.app/)
 
+
+![presentation](https://i.imgur.com/Gus9sKi.png)
+
 ## Built With
 
 - HTML
