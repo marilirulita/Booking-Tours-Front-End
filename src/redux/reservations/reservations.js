@@ -2,8 +2,8 @@ const ADD_RESERVATION = 'ADD_RESERVATION';
 const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
 const GET_API_DATA_RESERVATION = 'GET_API_DATA_RESERVATION';
 const URL = 'https://tourify-app.herokuapp.com/user_tours';
+
 const initialState = [];
-const user = JSON.parse(localStorage.getItem('user'));
 
 export const addReservation = (payload) => ({
   type: ADD_RESERVATION,
@@ -46,13 +46,7 @@ export const GetReservationsAPI = (token) => async (dispatch) => {
   }
 };
 
-export const PostReservationsAPI = (data) => async () => {
-  const reservationData = {
-    user_id: user.user.user_id,
-    tour_id: data.tour_id,
-    reservation_date: data.reservation_date,
-    persons_number: data.persons_number,
-  };
+export const PostReservationsAPI = (data, token) => async () => {
   const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -60,24 +54,24 @@ export const PostReservationsAPI = (data) => async () => {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: user.token,
+      Authorization: token,
     },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
-    body: JSON.stringify(reservationData),
+    body: JSON.stringify(data),
   });
   if (response.status === 201) {
     GetReservationsAPI();
   }
 };
 
-export const deleteReservationApi = (id) => async (dispatch) => {
+export const deleteReservationApi = (id, token) => async (dispatch) => {
   await fetch(`${URL}/${id}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      Authorization: user.token,
+      Authorization: token,
     },
   });
   dispatch(removeReservation(id));
