@@ -1,6 +1,6 @@
 import { React, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { GetReservationsAPI, deleteReservationApi } from '../redux/reservations/reservations';
 
 const Reservations = () => {
@@ -13,17 +13,18 @@ const Reservations = () => {
     }
   }, [navigate, user]);
 
-  const { userID } = useParams();
   const dispatch = useDispatch();
   const reservations = useSelector((store) => store.reservations);
   useEffect(() => {
     if (user.length > 0) {
       dispatch(GetReservationsAPI(user[0].token));
     }
-  }, [reservations, dispatch, userID, user]);
+  }, [reservations, dispatch, user]);
 
   const deleteReservation = (id) => {
-    dispatch(deleteReservationApi(id));
+    if (user.length > 0) {
+      dispatch(deleteReservationApi(id, user[0].token));
+    }
     navigate('/Reservations');
   };
   useEffect(() => {
@@ -36,7 +37,7 @@ const Reservations = () => {
 
   if (reservations !== undefined) {
     return (
-      <div>
+      <div className="reservation-countainer">
         {reservations.map((obj) => (
           <div
             className="tour-details"

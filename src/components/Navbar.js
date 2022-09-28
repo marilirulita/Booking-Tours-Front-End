@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeUser } from '../redux/user/user';
 import { deleteUserApi } from '../redux/user/userAPI';
+import logo from '../Tourify.png';
 
 const Navbar = () => {
   const user = useSelector((store) => store.user);
@@ -35,7 +36,7 @@ const Navbar = () => {
           ? <button className="menu-btn" onClick={handleToggle} type="button">&#9776;</button> : <button className="menu-btn" onClick={handleToggle} type="button">&#9747;</button>}
       </div>
       <div className={`logo-container ${navbarOpen ? ' closeMenu' : ''}`}>
-        <h1 className="app-title">Tourify</h1>
+        <img src={logo} alt="Logo" />
       </div>
       <div className={`nav-links ${navbarOpen ? ' closeMenu' : ''}`}>
         <NavLink to="/" className="nav-link" onClick={() => closeMenu()}>Home</NavLink>

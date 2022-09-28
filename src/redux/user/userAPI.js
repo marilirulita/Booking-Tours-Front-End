@@ -4,6 +4,7 @@ import {
 
 const URL = 'https://tourify-app.herokuapp.com/users';
 const URL2 = 'https://tourify-app.herokuapp.com/auth/login';
+
 export const LoginAPI = (data) => async (dispatch) => {
   const response = await fetch(URL2, {
     method: 'POST',
@@ -20,7 +21,6 @@ export const LoginAPI = (data) => async (dispatch) => {
   if (response.status === 200) {
     const data = await response.json();
     dispatch(getDataUser(data));
-    localStorage.setItem('user', JSON.stringify(data));
   }
 };
 

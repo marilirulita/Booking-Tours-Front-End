@@ -1,3 +1,8 @@
+.reservation-countainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .cancel-btn {
   cursor: pointer;
 }

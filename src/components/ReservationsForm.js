@@ -6,7 +6,6 @@ import { PostReservationsAPI } from '../redux/reservations/reservations';
 import '../styling/ReservationsForm.css';
 
 const Reservations = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
   const userStore = useSelector((store) => store.user);
   const navigate = useNavigate();
 
@@ -16,10 +15,8 @@ const Reservations = () => {
     }
   }, [navigate, userStore]);
 
-  const { token } = user;
-
   const [value, setValue] = useState({
-    persons_number: 0, reservation_date: '', tour_id: 0, user_id: 0,
+    persons_number: 0, reservation_date: '', tour_id: 0,
   });
 
   const onChange = (e) => {
@@ -29,13 +26,13 @@ const Reservations = () => {
   const dispatch = useDispatch();
   const Store = useSelector((store) => store.tours);
   useEffect(() => {
-    document.title = dispatch(fetchApiDataTours(token));
-  }, [dispatch, token]);
+    dispatch(fetchApiDataTours());
+  }, [dispatch]);
 
   const Reserve = (e) => {
     e.preventDefault();
-    if (value.tour_id > 0) {
-      dispatch(PostReservationsAPI(value));
+    if (value.tour_id > 0 && userStore.length > 0) {
+      dispatch(PostReservationsAPI(value, userStore[0].token));
       navigate('/Reservations');
     } else {
       // eslint-disable-next-line
