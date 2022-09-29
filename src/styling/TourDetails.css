@@ -1,7 +1,7 @@
 .tour-details {
   padding: 5%;
   flex: 1;
-  height: 100vh;
+  height: fit-content
 }
 
 .tour-photo {
