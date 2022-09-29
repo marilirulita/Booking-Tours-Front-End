@@ -51,7 +51,7 @@ const NewTour = () => {
       <div className="newTourForm">
         <div className="form-column">
           <input type="text" placeholder="Tour Title" value={state.title} onChange={(e) => setState({ ...state, title: e.target.value })} required />
-          <input type="number" placeholder="Duration (weeks)" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} required />
+          <input type="number" placeholder="Duration (weeks)" min="1" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} required />
           <textarea placeholder="Description" value={state.description} onChange={(e) => setState({ ...state, description: e.target.value })} required />
         </div>
         <div className="column-rigth">
