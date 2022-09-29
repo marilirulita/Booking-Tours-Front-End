@@ -2,9 +2,7 @@
 .tour-details {
   padding: 5%;
   flex: 1;
-  /* stylelint-disable */
-  height: fit-content;
-  /* stylelint-enable */
+  height: auto;
 }
 
 .tour-photo {
