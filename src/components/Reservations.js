@@ -19,23 +19,18 @@ const Reservations = () => {
     if (user.length > 0) {
       dispatch(GetReservationsAPI(user[0].token));
     }
-  }, [reservations, dispatch, user]);
+  }, [dispatch, user]);
 
-  const deleteReservation = (id) => {
+  const deleteReservation = (obj) => {
     if (user.length > 0) {
-      dispatch(deleteReservationApi(id, user[0].token));
+      dispatch(deleteReservationApi(obj, user[0].token));
     }
     navigate('/Reservations');
   };
   useEffect(() => {
     document.title = 'My reservations';
   }, []);
-
-  useEffect(() => {
-    document.title = 'My Reservations';
-  }, []);
-
-  if (reservations !== undefined) {
+  if (reservations.length > 0) {
     return (
       <div className="reservation-countainer">
         {reservations.map((obj) => (
@@ -70,7 +65,7 @@ const Reservations = () => {
                 <p>{obj.reservation_date}</p>
               </div>
               <div className="tour-reserve-btn">
-                <button className="cancel-btn" type="button" onClick={() => deleteReservation(obj.reservation_id)}>Cancel Reservation</button>
+                <button className="cancel-btn" type="button" onClick={() => deleteReservation(obj)}>Cancel Reservation</button>
               </div>
             </div>
           </div>
@@ -78,6 +73,11 @@ const Reservations = () => {
       </div>
     );
   }
-  return false;
+  return (
+    <div className="no-reservations">
+      <p>You have no reservations yet</p>
+    </div>
+  );
 };
+
 export default Reservations;
