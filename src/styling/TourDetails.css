@@ -1,7 +1,10 @@
+
 .tour-details {
   padding: 5%;
   flex: 1;
-  height: fit-content
+  /* stylelint-disable */
+  height: fit-content;
+  /* stylelint-enable */
 }
 
 .tour-photo {
