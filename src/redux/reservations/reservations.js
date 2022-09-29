@@ -25,7 +25,7 @@ export const reservationReducer = (state = initialState, action) => {
     case ADD_RESERVATION:
       return [...state, action.payload];
     case REMOVE_RESERVATION:
-      return state.filter((reservation) => reservation.tour.id !== action.payload);
+      return state.filter((reservation) => reservation.reservation_id !== action.payload);
     case GET_API_DATA_RESERVATION:
       return [...action.payload];
     default:
@@ -74,5 +74,5 @@ export const deleteReservationApi = (obj, token) => async (dispatch) => {
       Authorization: token,
     },
   });
-  dispatch(removeReservation(obj.tour.id));
+  dispatch(removeReservation(obj.reservation_id));
 };
