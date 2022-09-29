@@ -19,6 +19,9 @@
 - Ract
 - Redux
 
+## Live Demo
+
+[Link to live Demo](https://tourify-app.netlify.app)
 
 ## Getting Started
 

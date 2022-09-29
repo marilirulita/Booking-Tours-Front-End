@@ -73,6 +73,14 @@
   cursor: pointer;
 }
 
+.form-column textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.form-column textarea::-webkit-resizer {
+  display: none;
+}
+
 @media (max-width: 500px) {
   .newTourForm {
     flex-direction: column;

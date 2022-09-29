@@ -25,7 +25,7 @@ export const reservationReducer = (state = initialState, action) => {
     case ADD_RESERVATION:
       return [...state, action.payload];
     case REMOVE_RESERVATION:
-      return state.filter((reservation) => reservation.id !== action.payload);
+      return state.filter((reservation) => reservation.reservation_id !== action.payload);
     case GET_API_DATA_RESERVATION:
       return [...action.payload];
     default:
@@ -65,8 +65,8 @@ export const PostReservationsAPI = (data, token) => async () => {
   }
 };
 
-export const deleteReservationApi = (id, token) => async (dispatch) => {
-  await fetch(`${URL}/${id}`, {
+export const deleteReservationApi = (obj, token) => async (dispatch) => {
+  await fetch(`${URL}/${obj.reservation_id}`, {
     method: 'DELETE',
     headers: {
       Accept: 'application/json',
@@ -74,5 +74,5 @@ export const deleteReservationApi = (id, token) => async (dispatch) => {
       Authorization: token,
     },
   });
-  dispatch(removeReservation(id));
+  dispatch(removeReservation(obj.reservation_id));
 };

@@ -49,7 +49,7 @@ const Reservations = () => {
       <h1>Reservations</h1>
       <form onSubmit={Reserve} className="reservation-form" action="">
         <input type="date" id="reservation_date" placeholder="Reservation date DD-MM-YYYY" onChange={onChange} required />
-        <input id="persons_number" type="number" min="0" placeholder="Number of Persons" onChange={onChange} required />
+        <input id="persons_number" type="number" min="1" placeholder="Number of Persons" onChange={onChange} required />
         <select id="tour_id" onChange={onChange}>
           <option key="option">--Option--</option>
           {Store.map((element) => (
