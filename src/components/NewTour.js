@@ -18,7 +18,6 @@ const NewTour = () => {
     duration: '',
     description: '',
     city: '',
-    user_id: '',
     cost: '',
     photo: '',
   };
@@ -26,10 +25,8 @@ const NewTour = () => {
   const [state, setState] = useState(newTour);
   const dispatch = useDispatch();
 
-  const submitForm = () => {
-    state.user_id = user[0].user.user_id;
-    dispatch(postTourApi(state, user[0].token));
-    setState(newTour);
+  const submitForm = (event) => {
+    event.preventDefault();
     let formCompleted = true;
     Object.keys(state).forEach((key) => {
       if (state[key] === '') {
@@ -37,6 +34,8 @@ const NewTour = () => {
       }
     });
     if (formCompleted) {
+      dispatch(postTourApi(state, user[0].token));
+      setState(newTour);
       navigate('/');
     }
   };
@@ -48,7 +47,7 @@ const NewTour = () => {
   return (
     <div className="newtour-content">
       <h1>CREATE A NEW TOUR</h1>
-      <div className="newTourForm">
+      <form className="newTourForm" onSubmit={submitForm}>
         <div className="form-column">
           <input type="text" placeholder="Tour Title" value={state.title} onChange={(e) => setState({ ...state, title: e.target.value })} required />
           <input type="number" placeholder="Duration (weeks)" min="1" value={state.duration} onChange={(e) => setState({ ...state, duration: e.target.value })} required />
@@ -61,10 +60,10 @@ const NewTour = () => {
             <input type="text" placeholder="Photo URL" value={state.photo} onChange={(e) => setState({ ...state, photo: e.target.value })} required />
           </div>
           <div>
-            <button className="add-tour-btn" type="submit" value="add-tour" onClick={submitForm}>Create Tour</button>
+            <button className="add-tour-btn" type="submit" value="add-tour">Create Tour</button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

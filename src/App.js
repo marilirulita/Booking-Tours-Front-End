@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import CryptoJS from 'crypto-js';
+import { useDispatch } from 'react-redux';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -9,6 +11,7 @@ import NewTour from './components/NewTour';
 import ReservationsForm from './components/ReservationsForm';
 import Reservations from './components/Reservations';
 import DeleteTours from './components/DeleteTours';
+import { addUser } from './redux/user/user';
 import './styling/Navbar.css';
 import './styling/reservations.css';
 import './styling/TourDetails.css';
@@ -16,7 +19,18 @@ import './styling/main.css';
 import './styling/newTourForm.css';
 import './styling/deleteTours.css';
 
-function App() {
+const App = () => {
+  const loggedUser = localStorage.getItem('user');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (loggedUser) {
+      const bytes = CryptoJS.AES.decrypt(loggedUser, 'user');
+      const originalText = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+      dispatch(addUser(originalText));
+    }
+  }, [loggedUser, dispatch]);
+
   return (
     <div className="app">
       <Navbar />
@@ -32,6 +46,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

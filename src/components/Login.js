@@ -5,15 +5,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LoginAPI } from '../redux/user/userAPI';
 import '../styling/login.css';
 
+const CriptoJS = require('crypto-js');
+
 const Login = () => {
   const user = useSelector((store) => store.user);
-  const [value, setValue] = useState({ email: '', password: '' });
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [value, setValue] = useState({ email: '', password: '' });
+
   const onChange = (e) => {
     const newValue = { ...value, [e.target.id]: e.target.value };
     setValue(newValue);
   };
-  const navigate = useNavigate();
+
   const Login = (e) => {
     e.preventDefault();
     dispatch(LoginAPI(value));
@@ -21,6 +27,8 @@ const Login = () => {
 
   useEffect(() => {
     if (user.length > 0) {
+      const cypherText = CriptoJS.AES.encrypt(JSON.stringify(user[0]), 'user').toString();
+      localStorage.setItem('user', cypherText);
       navigate('/');
     }
   }, [navigate, user]);
@@ -32,9 +40,9 @@ const Login = () => {
   return (
     <div className="login">
       <h1>Welcome!!!</h1>
-      <form className="login-form" onSubmit={Login} action="">
-        <input type="email" id="email" placeholder="Email" onChange={onChange} required />
-        <input type="password" id="password" placeholder="Password" onChange={onChange} required />
+      <form className="login-form" onSubmit={Login}>
+        <input type="email" id="email" placeholder="Email" value={value.email} onChange={onChange} required />
+        <input type="password" id="password" placeholder="Password" value={value.password} onChange={onChange} required />
         <button type="submit">Login</button>
       </form>
       <div className="aditional-links">

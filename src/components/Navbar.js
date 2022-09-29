@@ -23,10 +23,12 @@ const Navbar = () => {
 
   const signOut = () => {
     dispatch(removeUser());
+    localStorage.removeItem('user');
   };
 
   const deleteAccount = () => {
     dispatch(deleteUserApi(user[0].user.user_id, user[0].token));
+    localStorage.removeItem('user');
   };
 
   return (
@@ -45,6 +47,7 @@ const Navbar = () => {
         <NavLink to="/ReservationsForm" className={activeLink} onClick={() => closeMenu()}>Reserve Tour</NavLink>
         <NavLink to="/DeleteTours" className={activeLink} onClick={() => closeMenu()}>Delete Tour</NavLink>
       </div>
+
       {user.length > 0
         ? (
           <div className={`sign-out ${navbarOpen ? ' closeMenu' : ''}`}>

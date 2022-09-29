@@ -21,6 +21,9 @@ export const LoginAPI = (data) => async (dispatch) => {
   if (response.status === 200) {
     const data = await response.json();
     dispatch(getDataUser(data));
+  } else {
+    // eslint-disable-next-line
+    alert('Your email or password is incorrect, please try again');
   }
 };
 
@@ -33,7 +36,7 @@ export const GetUserAPI = (num) => async (dispatch) => {
 };
 
 export const postUserApi = (newUser) => async () => {
-  await fetch(URL, {
+  const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
@@ -45,6 +48,10 @@ export const postUserApi = (newUser) => async () => {
     referrerPolicy: 'no-referrer',
     body: JSON.stringify(newUser),
   });
+  if (response.status !== 201) {
+    // eslint-disable-next-line
+    alert('Your information is incorrect, please try again');
+  }
 };
 
 export const deleteUserApi = (id, token) => async (dispatch) => {
