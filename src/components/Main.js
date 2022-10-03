@@ -27,7 +27,7 @@ const Main = () => {
 
   useEffect(() => {
     dispatch(fetchApiDataTours());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     document.title = 'Home';
