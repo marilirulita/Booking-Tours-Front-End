@@ -20,9 +20,11 @@ import './styling/newTourForm.css';
 import './styling/deleteTours.css';
 
 const App = () => {
+  /* this code look for a username and password saved in local storage */
   const loggedUser = localStorage.getItem('user');
   const dispatch = useDispatch();
 
+  /* this code decrypt the username and pasword which is saved ecrypted for security */
   useEffect(() => {
     if (loggedUser) {
       const bytes = CryptoJS.AES.decrypt(loggedUser, 'user');
