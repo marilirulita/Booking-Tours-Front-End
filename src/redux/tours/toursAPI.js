@@ -2,7 +2,7 @@ import {
   getApiDataTour, getApiDataTourDetail, removeTour,
 } from './tours';
 
-const URL = 'https://tourify-app.herokuapp.com/tours';
+const URL = 'http://127.0.0.1:3000/tours';
 
 export const fetchApiDataTours = () => async (dispatch) => {
   const result = await fetch(URL);

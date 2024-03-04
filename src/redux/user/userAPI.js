@@ -2,8 +2,8 @@ import {
   getDataUser, removeUser,
 } from './user';
 
-const URL = 'https://tourify-app.herokuapp.com/users';
-const URL2 = 'https://tourify-app.herokuapp.com/auth/login';
+const URL = 'http://127.0.0.1:3000/users';
+const URL2 = 'http://127.0.0.1:3000/auth/login';
 
 export const LoginAPI = (data) => async (dispatch) => {
   const response = await fetch(URL2, {
