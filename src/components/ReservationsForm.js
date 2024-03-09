@@ -28,11 +28,12 @@ const Reservations = () => {
   useEffect(() => {
     dispatch(fetchApiDataTours());
   }, [dispatch]);
-
   const Reserve = (e) => {
     e.preventDefault();
     if (value.tour_id > 0 && userStore.length > 0) {
-      dispatch(PostReservationsAPI(value, userStore[0].token));
+      const tour = Store.find((element) => element.id === Number(value.tour_id));
+      const id = Math.round(Math.random() * 1000);
+      dispatch(PostReservationsAPI(value, userStore[0].token, tour, id));
       navigate('/Reservations');
     } else {
       // eslint-disable-next-line
