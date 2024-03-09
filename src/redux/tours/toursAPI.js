@@ -1,8 +1,8 @@
 import {
-  getApiDataTour, getApiDataTourDetail, removeTour,
+  getApiDataTour, getApiDataTourDetail, removeTour, addTour,
 } from './tours';
 
-const URL = 'https://tourify-app.herokuapp.com/tours';
+const URL = 'http://127.0.0.1:3000/tours';
 
 export const fetchApiDataTours = () => async (dispatch) => {
   const result = await fetch(URL);
@@ -15,11 +15,13 @@ export const fetchApiDataTours = () => async (dispatch) => {
 export const GetToursAPI = (num) => async (dispatch) => {
   const response = await fetch(URL.concat('/').concat(num), {
   });
-  const tours = await response.json();
-  dispatch(getApiDataTourDetail(tours));
+  if (response.status === 201) {
+    const tours = await response.json();
+    dispatch(getApiDataTourDetail(tours));
+  }
 };
 
-export const postTourApi = (newTour, token) => async () => {
+export const postTourApi = (newTour, token, userId, id) => async (dispatch) => {
   const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -35,6 +37,9 @@ export const postTourApi = (newTour, token) => async () => {
   });
   if (response.status === 201) {
     fetchApiDataTours();
+  } else {
+    const proTour = { ...newTour, userId, id };
+    dispatch(addTour(proTour));
   }
 };
 
@@ -48,6 +53,8 @@ export const deleteTourApi = (id, token) => async (dispatch) => {
     },
   });
   if (response.status === 204) {
+    dispatch(removeTour(id));
+  } else {
     dispatch(removeTour(id));
   }
 };

@@ -1,7 +1,7 @@
 const ADD_RESERVATION = 'ADD_RESERVATION';
 const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
 const GET_API_DATA_RESERVATION = 'GET_API_DATA_RESERVATION';
-const URL = 'https://tourify-app.herokuapp.com/user_tours';
+const URL = 'http://127.0.0.1:3000/user_tours';
 
 const initialState = [];
 
@@ -46,7 +46,7 @@ export const GetReservationsAPI = (token) => async (dispatch) => {
   }
 };
 
-export const PostReservationsAPI = (data, token) => async () => {
+export const PostReservationsAPI = (data, token, tour, id) => async (dispatch) => {
   const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -62,6 +62,14 @@ export const PostReservationsAPI = (data, token) => async () => {
   });
   if (response.status === 201) {
     GetReservationsAPI();
+  } else {
+    const provData = {
+      reservation_id: id,
+      persons_number: data.persons_number,
+      reservation_date: data.reservation_date,
+      tour: { ...tour },
+    };
+    dispatch(addReservation(provData));
   }
 };
 
