@@ -34,7 +34,8 @@ const NewTour = () => {
       }
     });
     if (formCompleted) {
-      dispatch(postTourApi(state, user[0].token));
+      const id = Math.round(Math.random() * 1000);
+      dispatch(postTourApi(state, user[0].token, user[0].id, id));
       setState(newTour);
       navigate('/');
     }
