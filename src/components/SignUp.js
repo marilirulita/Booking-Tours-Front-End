@@ -19,7 +19,8 @@ const SignUp = () => {
       email,
       password,
     };
-    dispatch(postUserApi(user));
+    const id = 1000;
+    dispatch(postUserApi(user, id));
     setName('');
     setEmail('');
     setPassword('');
