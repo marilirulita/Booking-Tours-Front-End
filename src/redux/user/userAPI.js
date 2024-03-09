@@ -1,5 +1,5 @@
 import {
-  getDataUser, removeUser,
+  getDataUser, removeUser, addUser,
 } from './user';
 
 const URL = 'http://127.0.0.1:3000/users';
@@ -23,7 +23,7 @@ export const LoginAPI = (data) => async (dispatch) => {
     dispatch(getDataUser(data));
   } else {
     // eslint-disable-next-line
-    alert('Your email or password is incorrect, please try again');
+    alert('Your email or password is incorrect, please try again, or you have to create an account');
   }
 };
 
@@ -35,7 +35,7 @@ export const GetUserAPI = (num) => async (dispatch) => {
   dispatch(getDataUser(user));
 };
 
-export const postUserApi = (newUser) => async () => {
+export const postUserApi = (newUser, id) => async (dispatch) => {
   const response = await fetch(URL, {
     method: 'POST',
     mode: 'cors',
@@ -49,8 +49,9 @@ export const postUserApi = (newUser) => async () => {
     body: JSON.stringify(newUser),
   });
   if (response.status !== 201) {
-    // eslint-disable-next-line
-    alert('Your information is incorrect, please try again');
+    const user = { ...newUser, id };
+    const temporalUser = { token: 'jkfldksjdg', user: { ...user } };
+    dispatch(addUser(temporalUser));
   }
 };
 
