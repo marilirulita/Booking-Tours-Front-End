@@ -8,7 +8,7 @@
 
 [Link Live Demo](https://serene-blancmange-86a602.netlify.app/)
 
-![presentation](https://imgur.com/a/uKAcZYG)
+![presentation](https://i.imgur.com/lWRQKnJ.png)
 
 ## Built With
 
